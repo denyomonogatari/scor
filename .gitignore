@@ -1,0 +1,22 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+
+!src
+!src/**
+
+!libs
+!libs/**
+
+!*.txt
+!*.md
+!*.jpg
+!*.png
+
+!WebContent
+!WebContent/**
+
+# MAC HIDDEN FILES
+.DS_Store
