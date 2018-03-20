@@ -2,16 +2,32 @@ package auth;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.User;
+
 @WebServlet(urlPatterns = {"/auth/Register"}, loadOnStartup=1)
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+		
+		// Pre-populate ServletContext with and array list of users
+		ArrayList<User> users = new ArrayList<>();
+		users.add(new User("John", "Doe", "john@doe.com", "abcd"));
+		users.add(new User("Mary", "Jane", "mary@jane.com", "bcde"));
+		
+		getServletContext().setAttribute("users", users);
+		
+	}
 	
     	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     		
