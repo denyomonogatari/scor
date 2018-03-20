@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.User;
+
 
 @WebServlet("/auth/Login")
 public class Login extends HttpServlet {
@@ -45,6 +47,10 @@ public class Login extends HttpServlet {
     		
     		out.println("<form action=\"Login\" method=\"post\">");
     		
+    		if (request.getAttribute("loginError") != null) {
+    			out.println("<p class=\"text-light bg-danger\">Invalid username and/or password.</p>");
+    		}
+    		
     		out.println("    <div class=\"form-group\">");
     		out.println("        <label for=\"email\">E-mail Address</label>");
     		out.println("        <input class=\"form-control\" type=\"email\" name=\"email\" id=\"email\" placeholder=\"Enter your e-mail address\">");
@@ -64,8 +70,35 @@ public class Login extends HttpServlet {
     		out.println("</html>");
 	}
     	
+    	protected User getUser(String email, String password) {
+    		ServletContext servletContext = getServletContext();
+    		ArrayList<User> users = (ArrayList<User>) servletContext.getAttribute("users");
+
+    		if (users != null)
+    			for (User user : users) 
+    				if (user.getEmail().equals(email) && user.getPassword().equals(password)) 
+    					return user;
+
+
+    		return null;
+    	}
+    	
     	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		doGet(request, response);
+    		
+    		String email = request.getParameter("email");
+    		String password = request.getParameter("password");
+    		
+    		// find user
+    		User user = getUser(email, password);
+    		
+    		if (user == null) {
+    			request.setAttribute("loginError", true);
+    			doGet(request, response);			
+    		}
+    		else {
+    			request.getSession().setAttribute("user", user);
+    			response.sendRedirect("../main/MainPage");
+    		}
     	}
 
 }
