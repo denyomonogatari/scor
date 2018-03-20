@@ -52,7 +52,13 @@ public class MainPage extends HttpServlet {
 		out.println("<div class=\"row\">");
 		out.println("	<div class=\"col-6\">");
 		out.println("		<h2>Semesters</h2>");
-		out.println("		<p>Your semesters go here.</p>");
+		// Sample Semester data
+//		out.println("		<p>Your semesters go here.</p>");
+		out.println("		<ul>");
+		out.println("			<li><a href=#>Spring 2018</a></li>");
+		out.println("			<li><a href=#>Winter 2017</a></li>");
+		out.println("			<li><a href=#>Fall 2017</a></li>");
+		out.println("		</ul>");
 		
 		out.println("	</div>");
 		out.println("	<div class=\"col-6\">");
