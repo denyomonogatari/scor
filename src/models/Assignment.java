@@ -7,14 +7,18 @@ public class Assignment {
 	private double score;
 
 	private double total;
-	
+
 	private boolean isCompleted;
 	private boolean isExtraCredit;
-	
+
 	private Date dateAssigned;
+
 	private Date dueDate;
-	
-	public Assignment(String name, double score, double total, boolean isCompleted, boolean isExtraCredit, Date dateAssigned, Date dueDate) {
+
+	private AssignmentType type;
+
+	public Assignment(String name, double score, double total, boolean isCompleted, boolean isExtraCredit,
+			Date dateAssigned, Date dueDate, AssignmentType type) {
 		this.name = name;
 		this.score = score;
 		this.total = total;
@@ -22,6 +26,7 @@ public class Assignment {
 		this.isExtraCredit = isExtraCredit;
 		this.dateAssigned = dateAssigned;
 		this.dueDate = dueDate;
+		this.type = type;
 	}
 
 	public String getName() {
@@ -31,7 +36,7 @@ public class Assignment {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public double getScore() {
 		return score;
 	}
@@ -79,8 +84,16 @@ public class Assignment {
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
-	
-	//name, score, total, isCompleted, isExtraCredit, dateAssigned, dueDate
+
+	public AssignmentType getType() {
+		return type;
+	}
+
+	public void setType(AssignmentType type) {
+		this.type = type;
+	}
+
+	// name, score, total, isCompleted, isExtraCredit, dateAssigned, dueDate
 	public String toString() {
 		StringBuilder output = new StringBuilder();
 		output.append("name: " + name + "\n");
@@ -90,7 +103,7 @@ public class Assignment {
 		output.append("isExtraCredit: " + isExtraCredit + "\n");
 		output.append("dateAssigned: " + dateAssigned + "\n");
 		output.append("dueDate: " + dueDate + "\n");
-		
+
 		return output.toString();
 	}
 }
