@@ -8,6 +8,7 @@ import models.Course;
 import models.GradingScale;
 import models.Semester;
 import models.Semester.Season;
+import models.User;
 
 public class Tester {
 	public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class Tester {
 		
 		Assessment quizzes = new Assessment("Midterms", 50);
 		quizzes.addAssignment(new Assignment("Midterm 1", 75, 100, true, false, new Date(currentMilliseconds), null));
-		quizzes.addAssignment(new Assignment("Midterm 2", 7, 100, true, false, new Date(currentMilliseconds), null));
+		quizzes.addAssignment(new Assignment("Midterm 2", 70, 100, true, false, new Date(currentMilliseconds), null));
 		
 		Assessment finalTest = new Assessment("Final", 30);
 		finalTest.addAssignment(new Assignment("Final", 95, 100, true, false, new Date(currentMilliseconds), null));
@@ -55,7 +56,11 @@ public class Tester {
 		spring2018.addCourse(cs2011);
 		spring2018.addCourse(cs3220);
 		
+		User johnDoe = new User("John", "Doe", "john@doe.com", "abcd");
+		johnDoe.addSemester(spring2018);
 		
-		System.out.println(spring2018);
+		
+//		System.out.println(spring2018);
+		System.out.println(johnDoe);
 	}
 }
