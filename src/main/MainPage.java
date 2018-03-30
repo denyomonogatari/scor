@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import models.Semester;
 import models.User;
 
 @WebServlet("/main/MainPage")
@@ -52,12 +53,9 @@ public class MainPage extends HttpServlet {
 		out.println("<div class=\"row\">");
 		out.println("	<div class=\"col-6\">");
 		out.println("		<h2>Semesters</h2>");
-		// Sample Semester data
-//		out.println("		<p>Your semesters go here.</p>");
 		out.println("		<ul>");
-		out.println("			<li><a href=#>Spring 2018</a></li>");
-		out.println("			<li><a href=#>Winter 2017</a></li>");
-		out.println("			<li><a href=#>Fall 2017</a></li>");
+		for (Semester semester : user.getSemesters()) 
+			out.println("			<li><a href=#>" + semester.getSeason() + " " + semester.getYear() + " " + String.format("%.2f", semester.getGPA()) + "</a></li>");
 		out.println("		</ul>");
 		
 		out.println("	</div>");
