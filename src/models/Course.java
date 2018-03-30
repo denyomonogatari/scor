@@ -6,15 +6,17 @@ public class Course {
 	private String name;
 	private GradingScale gradingScale;
 	private ArrayList<Assessment> assessments = new ArrayList<>();
+	private double units;
 	
-	public Course(String name, GradingScale gradingScale) {
-		this(name, gradingScale, new ArrayList<Assessment>());
+	public Course(String name, double units, GradingScale gradingScale) {
+		this(name, units, gradingScale, new ArrayList<Assessment>());
 	}
 
-	public Course(String name, GradingScale gradingScale, ArrayList<Assessment> assessments) {
+	public Course(String name, double units, GradingScale gradingScale, ArrayList<Assessment> assessments) {
 		this.name = name;
 		this.gradingScale = gradingScale;
 		this.assessments = assessments;
+		this.units = units;
 	}
 	
 	public String getName() {
@@ -39,6 +41,14 @@ public class Course {
 
 	public void setAssessments(ArrayList<Assessment> assessments) {
 		this.assessments = assessments;
+	}
+	
+	public double getUnits() {
+		return units;
+	}
+	
+	public void setUnits(double units) {
+		this.units = units;
 	}
 	
 	public void addAssessment(Assessment assessment) {
@@ -73,10 +83,15 @@ public class Course {
 		return gradingScale.getGrade(percentEarned);
 	}
 	
+	public double getGradePoints() {
+		return gradingScale.getCredits(getGrade()) * units;
+	}
+	
 	public String toString() {
 		StringBuilder output = new StringBuilder();
 		
 		output.append("name: " + name + "\n");
+		output.append("units: " + units + "\n");
 		output.append("grade: " + getGrade() + "\n");
 		output.append(String.format("Percent earned: %.2f", getPercentEarned()) + "\n");
 		output.append("assessments valid?: " + assessmentsAreValid() + "\n");

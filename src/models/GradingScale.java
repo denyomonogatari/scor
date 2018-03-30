@@ -224,6 +224,26 @@ public class GradingScale {
 		}
 	}
 	
+	public double getCredits(String grade) {
+		double credits;
+		switch(grade) {
+		case "A": credits = 4.0; break;
+		case "A-": credits = 3.7; break;
+		case "B+": credits = 3.3; break;
+		case "B": credits = 3.0; break;
+		case "B-": credits = 2.7; break;
+		case "C+": credits = 2.3; break;
+		case "C": credits = 2.0; break;
+		case "C-": credits = 1.7; break;
+		case "D+": credits = 1.3; break;
+		case "D": credits = 1.0; break;
+		case "D-": credits = 0.7; break;
+		default: credits = 0.0;
+		}
+		
+		return credits;
+	}
+	
 	public String toString() {
 		StringBuilder output = new StringBuilder();
 		output.append("type: " + type + "\n");
