@@ -55,8 +55,8 @@ public class SemesterPage extends HttpServlet {
 		out.println("		<ul>");
 		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
 		
-		for (int i = 0; i < user.getSemesters().get(id).getCourses().size(); i++) 
-			out.println("			<li><a href=#>" + user.getSemesters().get(id).getCourses().get(i).getName() + " " + user.getSemesters().get(id).getCourses().get(i).getGrade() + "</a></li>");
+		for (int i = 0; i < user.getSemesters().get(semesterId).getCourses().size(); i++) 
+			out.println("			<li><a href=#>" + user.getSemesters().get(semesterId).getCourses().get(i).getName() + " " + user.getSemesters().get(semesterId).getCourses().get(i).getGrade() + "</a></li>");
 		out.println("		</ul>");
 
 		out.println("	</div>");
