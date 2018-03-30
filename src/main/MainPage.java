@@ -22,7 +22,7 @@ public class MainPage extends HttpServlet {
 		// Get a reference to the session
 		HttpSession session = request.getSession();
 		
-		// Get a reference to the NoteUser object stored in the session
+		// Get a reference to the User object stored in the session
 		User user = (User) session.getAttribute("user");
 		
 		// If the User doesn't exist, then they didn't login. So, kick them back to Login
@@ -55,7 +55,7 @@ public class MainPage extends HttpServlet {
 		out.println("		<h2>Semesters</h2>");
 		out.println("		<ul>");
 		for (int i = 0; i < user.getSemesters().size(); i++)
-			out.println("			<li><a href=\"SemesterPage?id=" + i + "\">" + user.getSemesters().get(i).getSeason() + " " + user.getSemesters().get(i).getYear() + " " + String.format("%.2f", user.getSemesters().get(i).getGPA()) + "</a></li>");
+			out.println("			<li><a href=\"SemesterPage?semesterId=" + i + "\">" + user.getSemesters().get(i).getSeason() + " " + user.getSemesters().get(i).getYear() + " " + String.format("%.2f", user.getSemesters().get(i).getGPA()) + "</a></li>");
 		out.println("		</ul>");
 		
 		out.println("	</div>");
