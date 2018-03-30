@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import models.Semester;
 import models.User;
 
-@WebServlet("/main/SemesterPage")
-public class SemesterPage extends HttpServlet {
+@WebServlet("/main/CoursePage")
+public class CoursePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,29 +42,41 @@ public class SemesterPage extends HttpServlet {
 		out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
 		out.println("        <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">");
 		out.println("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">");
-		out.println("        <title>Semester Page</title>");
+		out.println("        <title>Course Page</title>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<div class=\"container\">");
 		out.println("<p class=\"text-right\"><a href=\"../auth/Logout\">Logout</a></p>");
 		out.println("<h1 class=\"display-2\">Hello, " + user.getFirst() + "</h1>");
 		out.println("<div class=\"row\">");
-		out.println("	<div class=\"col-6\">");
-		out.println("		<h2>Courses</h2>");
-		out.println("		<ul>");
-		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
+		out.println("	<div class=\"col-12\">");
 		
-		for (int i = 0; i < user.getSemesters().get(semesterId).getCourses().size(); i++) 
-			out.println("			<li><a href=\"CoursePage?semesterId=" + semesterId + "&courseId=" + i + "\">" + user.getSemesters().get(semesterId).getCourses().get(i).getName() + " " + user.getSemesters().get(semesterId).getCourses().get(i).getGrade() + "</a></li>");
-		out.println("		</ul>");
+		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
+		int courseId = Integer.parseInt(request.getParameter("courseId"));
+		
+		out.println("		<h2>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getName() + "</h2>");
+		out.println("		<h2>Percent: <strong>" + String.format("%.2f", user.getSemesters().get(semesterId).getCourses().get(courseId).getPercentEarned()) + "%</strong></h2>");
+		out.println("		<h2>Grade: <strong>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getGrade() + "</strong></h2>");
 
-		out.println("	</div>");
-		out.println("	<div class=\"col-6\">");
-		out.println("		<h2>Dates</h2>");
-		out.println("		<p>All your upcoming events go here.</p>");
-		out.println("	</div>");
-		out.println("	<div class=\"col\">");
-		out.println("	</div>");
+		for (int i = 0; i < user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().size(); i++) {
+			out.println("<h3>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getType() + " " + String.format("%.2f %%", user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getScore()) + " out of " + user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getWorth() + "%</h3>");
+			out.println("	<table class=\"table\">");
+			out.println("<tr>");
+			out.println("<th>Name</th>");
+			out.println("<th>Score</th>");
+			out.println("<th>Worth</th>");
+			out.println("</tr>");
+			for (int j = 0; j <  user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getAssignments().size(); j++) {
+				out.println("	<tr>");
+				out.println("		<td>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getAssignments().get(j).getName() + "</td>");
+				out.println("		<td>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getAssignments().get(j).getScore() + "</td>");
+				out.println("		<td>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getAssignments().get(j).getTotal() + "</td>");
+				out.println("	</tr>");
+			}
+			
+			out.println("	</table>");
+		}
+
 		out.println("</div>");
 
 		out.println("</div>");
