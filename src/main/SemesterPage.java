@@ -58,7 +58,18 @@ public class SemesterPage extends HttpServlet {
 		for (int i = 0; i < user.getSemesters().get(semesterId).getCourses().size(); i++) 
 			out.println("			<li><a href=\"CoursePage?semesterId=" + semesterId + "&courseId=" + i + "\">" + user.getSemesters().get(semesterId).getCourses().get(i).getName() + " " + user.getSemesters().get(semesterId).getCourses().get(i).getGrade() + "</a></li>");
 		out.println("		</ul>");
-
+		
+		out.println("	<div class=\"row\">");
+		out.println("		<div class=\"col\">");
+		out.print("				<input type=\"text\" class=\"form-control\" name=\"semester\" placeholder=\"Name of Course\"> ");
+		out.println("		</div>");
+		out.println("		<div class=\"col\">");
+		out.print("				<input type=\"text\" maxlength=\"2\" class=\"form-control\" name=\"grade\" placeholder=\"Grade\"> ");
+		out.println("		</div>");
+		out.println("		<div class=\"col\">");
+		out.println("			<a class=\"btn btn-primary\" href=\"#\" role=\"button\">Add Course</a>");
+		out.println("		</div>");
+		out.println("	</div>");
 		out.println("	</div>");
 		out.println("	<div class=\"col-6\">");
 		out.println("		<h2>Dates</h2>");
