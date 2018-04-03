@@ -57,7 +57,17 @@ public class MainPage extends HttpServlet {
 		for (int i = 0; i < user.getSemesters().size(); i++)
 			out.println("			<li><a href=\"SemesterPage?semesterId=" + i + "\">" + user.getSemesters().get(i).getSeason() + " " + user.getSemesters().get(i).getYear() + " " + String.format("%.2f", user.getSemesters().get(i).getGPA()) + "</a></li>");
 		out.println("		</ul>");
-		
+		out.println("	<div class=\"row\">");
+		out.println("		<div class=\"col\">");
+		out.print("				<input type=\"text\" class=\"form-control\" name=\"semester\" placeholder=\"Name of Semester\"> ");
+		out.println("		</div>");
+		out.println("		<div class=\"col\">");
+		out.print("				<input type=\"text\" maxlength=\"4\" class=\"form-control\" name=\"year\" placeholder=\"Year\"> ");
+		out.println("		</div>");
+		out.println("		<div class=\"col\">");
+		out.println("			<a class=\"btn btn-primary\" href=\"#\" role=\"button\">Add Semester</a>");
+		out.println("		</div>");
+		out.println("	</div>");
 		out.println("	</div>");
 		out.println("	<div class=\"col-6\">");
 		out.println("		<h2>Dates</h2>");

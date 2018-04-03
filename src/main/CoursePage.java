@@ -65,16 +65,26 @@ public class CoursePage extends HttpServlet {
 			out.println("<th>Name</th>");
 			out.println("<th>Score</th>");
 			out.println("<th>Worth</th>");
+			out.println("<th>Options</th>");
 			out.println("</tr>");
 			for (int j = 0; j <  user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getAssignments().size(); j++) {
 				out.println("	<tr>");
 				out.println("		<td>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getAssignments().get(j).getName() + "</td>");
 				out.println("		<td>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getAssignments().get(j).getScore() + "</td>");
 				out.println("		<td>" + user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(i).getAssignments().get(j).getTotal() + "</td>");
+				out.println("		<td>");
+				out.println("			<a class=\"btn btn-primary btn-secondary\" href=\"#\" role=\"button\">Edit</a> <a class=\"btn btn-primary btn-danger\" href=\"#\" role=\"button\">Delete</a>");
+				out.println("		</td>");
 				out.println("	</tr>");
 			}
-			
+			out.println("<tr>");
+			out.println("	<td><input type=\"text\" class=\"form-control\" name=\"name\" placeholder=\"Name of Assignment\"></td>");
+			out.println("	<td><input type=\"text\" class=\"form-control\" name=\"score\" placeholder=\"Your Score\"></td>");
+			out.println("	<td><input type=\"text\" class=\"form-control\" name=\"worth\" placeholder=\"Worth\"></td>");
+			out.println("	<td><a class=\"btn btn-primary\" href=\"#\" role=\"button\">Add</a></td>");
+			out.println("</tr>");
 			out.println("	</table>");
+			
 		}
 
 		out.println("</div>");
