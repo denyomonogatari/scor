@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,34 +49,37 @@ public class MainPage extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<div class=\"container\">");
-		out.println("<p class=\"text-right\"><a href=\"../auth/Logout\">Logout</a></p>");
-		out.println("<h1 class=\"display-2\">Hello, " + user.getFirst() + "</h1>");
-		out.println("<div class=\"row\">");
-		out.println("	<div class=\"col-6\">");
-		out.println("		<h2>Semesters</h2>");
-		out.println("		<ul>");
-		for (int i = 0; i < user.getSemesters().size(); i++)
-			out.println("			<li><a href=\"SemesterPage?semesterId=" + i + "\">" + user.getSemesters().get(i).getSeason() + " " + user.getSemesters().get(i).getYear() + " " + String.format("%.2f", user.getSemesters().get(i).getGPA()) + "</a></li>");
-		out.println("		</ul>");
+		out.println("	<p class=\"text-right\"><a href=\"../auth/Logout\">Logout</a></p>");
+		out.println("	<h1 class=\"display-2\">Hello, " + user.getFirst() + "</h1>");
 		out.println("	<div class=\"row\">");
-		out.println("		<div class=\"col\">");
-		out.print("				<input type=\"text\" class=\"form-control\" name=\"semester\" placeholder=\"Name of Semester\"> ");
+		out.println("		<div class=\"col-6\">");
+		out.println("			<h2>Semesters</h2>");
+		out.println("			<ul>");
+		
+		ArrayList<Semester> semesters = user.getSemesters();
+		for (int i = 0; i < semesters.size(); i++)
+			out.println("				<li><a href=\"SemesterPage?semesterId=" + i + "\">" + semesters.get(i).getSeason() + " " + semesters.get(i).getYear() + " " + String.format("%.2f", semesters.get(i).getGPA()) + "</a></li>");
+		
+		out.println("			</ul>");
+		out.println("			<div class=\"row\">");
+		out.println("				<div class=\"col\">");
+		out.println("					<input type=\"text\" class=\"form-control\" name=\"semester\" placeholder=\"Name of Semester\"> ");
+		out.println("				</div>");
+		out.println("				<div class=\"col\">");
+		out.println("					<input type=\"text\" maxlength=\"4\" class=\"form-control\" name=\"year\" placeholder=\"Year\"> ");
+		out.println("				</div>");
+		out.println("				<div class=\"col\">");
+		out.println("					<a class=\"btn btn-primary\" href=\"#\" role=\"button\">Add Semester</a>");
+		out.println("				</div>");
+		out.println("			</div>");
+		out.println("		</div>");
+		out.println("		<div class=\"col-6\">");
+		out.println("			<h2>Dates</h2>");
+		out.println("			<p>All your upcoming events go here.</p>");
 		out.println("		</div>");
 		out.println("		<div class=\"col\">");
-		out.print("				<input type=\"text\" maxlength=\"4\" class=\"form-control\" name=\"year\" placeholder=\"Year\"> ");
-		out.println("		</div>");
-		out.println("		<div class=\"col\">");
-		out.println("			<a class=\"btn btn-primary\" href=\"#\" role=\"button\">Add Semester</a>");
 		out.println("		</div>");
 		out.println("	</div>");
-		out.println("	</div>");
-		out.println("	<div class=\"col-6\">");
-		out.println("		<h2>Dates</h2>");
-		out.println("		<p>All your upcoming events go here.</p>");
-		out.println("	</div>");
-		out.println("	<div class=\"col\">");
-		out.println("	</div>");
-		out.println("</div>");
 		
 		out.println("</div>");
 		out.println("</body>");
