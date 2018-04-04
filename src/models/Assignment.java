@@ -17,6 +17,10 @@ public class Assignment {
 
 	private AssignmentType type;
 
+	public Assignment(String name, double score, double total, AssignmentType type) {
+		this(name, score, total, true, false, null, null, type);
+	}
+	
 	public Assignment(String name, double score, double total, boolean isCompleted, boolean isExtraCredit,
 			Date dateAssigned, Date dueDate, AssignmentType type) {
 		this.name = name;
