@@ -43,27 +43,27 @@ public class Login extends HttpServlet {
     		out.println("<body>");
     		out.println("<div class=\"container\">");
     		
-    		out.println("<h1 class=\"display-1\">Login</h1>");
+    		out.println("	<h1 class=\"display-1\">Login</h1>");
     		
-    		out.println("<form action=\"Login\" method=\"post\">");
+    		out.println("	<form action=\"Login\" method=\"post\">");
     		
     		if (request.getAttribute("loginError") != null) {
-    			out.println("<p class=\"text-light bg-danger\">Invalid username and/or password.</p>");
+    			out.println("		<p class=\"text-light bg-danger\">Invalid username and/or password.</p>");
     		}
     		
-    		out.println("    <div class=\"form-group\">");
-    		out.println("        <label for=\"email\">E-mail Address</label>");
-    		out.println("        <input class=\"form-control\" type=\"email\" name=\"email\" id=\"email\" placeholder=\"Enter your e-mail address\">");
-    		out.println("    </div>");
-    		out.println("    <div class=\"form-group\">");
-    		out.println("        <label for=\"password\">Password</label>");
-    		out.println("        <input class=\"form-control\" type=\"password\" name=\"password\" id=\"password\" placeholder=\"Enter your password\">");
-    		out.println("    </div>");
-    		out.println("    <div class=\"form-group\">");
-    		out.println("        <button type=\"submit\" class=\"btn btn-primary\">Login</button>");
-    		out.println("    </div>");
-    		out.println("</form>");
-    		out.println("<p>Don't have an account? <a href=\"Register\">Sign-Up!</a></p>");
+    		out.println("    	<div class=\"form-group\">");
+    		out.println("       	 	<label for=\"email\">E-mail Address</label>");
+    		out.println("        	<input class=\"form-control\" type=\"email\" name=\"email\" id=\"email\" placeholder=\"Enter your e-mail address\">");
+    		out.println("    	</div>");
+    		out.println("    	<div class=\"form-group\">");
+    		out.println("       		<label for=\"password\">Password</label>");
+    		out.println("        	<input class=\"form-control\" type=\"password\" name=\"password\" id=\"password\" placeholder=\"Enter your password\">");
+    		out.println("    	</div>");
+    		out.println("    	<div class=\"form-group\">");
+    		out.println("        	<button type=\"submit\" class=\"btn btn-primary\">Login</button>");
+    		out.println("    	</div>");
+    		out.println("	</form>");
+    		out.println("	<p>Don't have an account? <a href=\"Register\">Sign-Up!</a></p>");
     		
     		out.println("</div>");
     		out.println("</body>");
@@ -78,7 +78,6 @@ public class Login extends HttpServlet {
     			for (User user : users) 
     				if (user.getEmail().equals(email) && user.getPassword().equals(password)) 
     					return user;
-
 
     		return null;
     	}
