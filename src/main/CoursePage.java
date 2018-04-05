@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import models.Assessment;
 import models.Assignment;
+import models.AssignmentType;
 import models.Course;
 import models.User;
 
@@ -86,12 +87,21 @@ public class CoursePage extends HttpServlet {
 				out.println("						</td>");
 				out.println("					</tr>");
 			}
+			
+			out.print("<form action=\"../actions/AddAssignment\">");
+			//add hidden fields here
+			out.println("<input type=\"hidden\" name=\"semesterId\" value=\"" + semesterId + "\">");
+			out.println("<input type=\"hidden\" name=\"courseId\" value=\"" + courseId + "\">");
+			out.println("<input type=\"hidden\" name=\"assessmentId\" value=\"" + i + "\">");
+			out.println("<input type=\"hidden\" name=\"assignmentType\" value=\"" + assessments.get(i).getType() + "\">");
+			
 			out.println("					<tr>");
-			out.println("						<td><input type=\"text\" class=\"form-control\" name=\"name\" placeholder=\"Name of Assignment\"></td>");
-			out.println("						<td><input type=\"text\" class=\"form-control\" name=\"score\" placeholder=\"Your Score\"></td>");
-			out.println("						<td><input type=\"text\" class=\"form-control\" name=\"worth\" placeholder=\"Worth\"></td>");
-			out.println("						<td><a class=\"btn btn-primary\" href=\"#\" role=\"button\">Add</a></td>");
+			out.println("						<td><input type=\"text\" class=\"form-control\" name=\"assignmentName\" placeholder=\"Name of Assignment\"></td>");
+			out.println("						<td><input type=\"text\" class=\"form-control\" name=\"assignmentScore\" placeholder=\"Your Score\"></td>");
+			out.println("						<td><input type=\"text\" class=\"form-control\" name=\"assignmentWorth\" placeholder=\"Worth\"></td>");
+			out.println("						<td><input type=\"submit\" class=\"btn btn-primary\" value=\"Add\"></td>");
 			out.println("					</tr>");
+			out.println("</form>");
 			out.println("				</table>");
 			
 		}
