@@ -68,7 +68,7 @@ public class CoursePage extends HttpServlet {
 		ArrayList<Assessment> assessments = course.getAssessments();
 		for (int i = 0; i < assessments.size(); i++) { // get assessments for course to display them
 			out.println("				<h3>" + assessments.get(i).getType() + " " + String.format("%.2f %%", assessments.get(i).getScore()) + " out of " + assessments.get(i).getWorth() + "%</h3>");
-			out.println("				<table class=\"table\">");
+			out.println("				<table class=\"table table-hover\">");
 			out.println("					<tr>");
 			out.println("						<th>Name</th>");
 			out.println("						<th>Score</th>");
@@ -78,12 +78,13 @@ public class CoursePage extends HttpServlet {
 			
 			ArrayList<Assignment> assignments = assessments.get(i).getAssignments(); // get assignments for assessment i
 			for (int j = 0; j <  assignments.size(); j++) { // iterate through assignments to display them
+				String assignmentQueryString = "?semesterId=" + semesterId + "&courseId=" + courseId + "&assessmentId=" + i + "&assignmentId=" + j;
 				out.println("					<tr>");
 				out.println("						<td>" + assignments.get(j).getName() + "</td>");
 				out.println("						<td>" + assignments.get(j).getScore() + "</td>");
 				out.println("						<td>" + assignments.get(j).getTotal() + "</td>");
 				out.println("						<td>");
-				out.println("							<a class=\"btn btn-primary btn-secondary\" href=\"#\" role=\"button\">Edit</a> <a class=\"btn btn-primary btn-danger\" href=\"#\" role=\"button\">Delete</a>");
+				out.println("							<a class=\"btn btn-primary btn-secondary\" href=\"../actions/EditAssignment" + assignmentQueryString + "\" role=\"button\">Edit</a> <a class=\"btn btn-primary btn-danger\" href=\"#\" role=\"button\">Delete</a>");
 				out.println("						</td>");
 				out.println("					</tr>");
 			}
