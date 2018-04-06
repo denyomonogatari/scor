@@ -78,13 +78,15 @@ public class CoursePage extends HttpServlet {
 			
 			ArrayList<Assignment> assignments = assessments.get(i).getAssignments(); // get assignments for assessment i
 			for (int j = 0; j <  assignments.size(); j++) { // iterate through assignments to display them
+				
 				String assignmentQueryString = "?semesterId=" + semesterId + "&courseId=" + courseId + "&assessmentId=" + i + "&assignmentId=" + j;
+				
 				out.println("					<tr>");
 				out.println("						<td>" + assignments.get(j).getName() + "</td>");
 				out.println("						<td>" + assignments.get(j).getScore() + "</td>");
 				out.println("						<td>" + assignments.get(j).getTotal() + "</td>");
 				out.println("						<td>");
-				out.println("							<a class=\"btn btn-primary btn-secondary\" href=\"../actions/EditAssignment" + assignmentQueryString + "\" role=\"button\">Edit</a> <a class=\"btn btn-primary btn-danger\" href=\"#\" role=\"button\">Delete</a>");
+				out.println("							<a class=\"btn btn-primary btn-secondary\" href=\"../actions/EditAssignment" + assignmentQueryString + "\" role=\"button\">Edit</a> <a class=\"btn btn-primary btn-danger\" href=\"../actions/DeleteAssignment" + assignmentQueryString + "\" role=\"button\">Delete</a>");
 				out.println("						</td>");
 				out.println("					</tr>");
 			}
