@@ -49,7 +49,7 @@ public class CoursePage extends HttpServlet {
 		out.println("        <title>Course Page</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("	<div class=\"container\">");
+		out.println("	<div class=\"container mb-5\">");
 		out.println("		<p class=\"text-right\"><a href=\"../auth/Logout\">Logout</a></p>");
 		out.println("		<h1 class=\"display-2\">Hello, " + user.getFirst() + "</h1>");
 		out.println("		<div class=\"row\">");
@@ -61,7 +61,7 @@ public class CoursePage extends HttpServlet {
 		Course course = user.getSemesters().get(semesterId).getCourses().get(courseId); // get course
 		
 		out.println("				<h2>" + course.getName() + "</h2>");
-		out.println("				<h2>Percent: <strong>" + String.format("%.2f", course.getPercentEarned()) + "%</strong></h2>");
+		out.println("				<h2>Percent: <strong>" + String.format("%.2f", course.getPercentEarned()) + "%</strong> out of 100.00%</h2>");
 		out.println("				<h2>Grade: <strong>" + course.getGrade() + "</strong></h2>");
 		
 		ArrayList<Assessment> assessments = course.getAssessments();
@@ -111,16 +111,25 @@ public class CoursePage extends HttpServlet {
 		
 		out.println("		</div>");
 
-		out.println("<div class\"row\">");
-		out.print("<form action=\"../actions/AddAssessment\">");
-		out.println("		<input type=\"hidden\" name=\"semesterId\" value=\"" + semesterId + "\">");
-		out.println("		<input type=\"hidden\" name=\"courseId\" value=\"" + courseId + "\">");
-
-		out.println("		<input type=\"text\" class= \"form-control\" name=\"assessmentType\" placeholder=\"type\">");
-		out.println("		<input type=\"text\" class= \"form-control\" name=\"assessmentWorth\" placeholder=\"worth\">");
-		out.println("		<input type=\"submit\" class=\"btn btn-primary\" value=\"Add Assessment\">");
-		out.println("</form>");
-		out.println("</div>");
+		out.println("		<div class=\"row\">");
+		out.println("		<div class=\"col-12\">");
+		out.println("			<form action=\"../actions/AddAssessment\">");
+		out.println("						<input type=\"hidden\" name=\"semesterId\" value=\"" + semesterId + "\">");
+		out.println("						<input type=\"hidden\" name=\"courseId\" value=\"" + courseId + "\">");
+		out.println("				<div class=\"form-row\">");
+		out.println("					<div class=\"col\">");
+		out.println("						<input type=\"text\" class= \"form-control\" name=\"assessmentType\" placeholder=\"type\">");
+		out.println("					</div>");
+		out.println("					<div class=\"col\">");
+		out.println("						<input type=\"text\" class= \"form-control\" name=\"assessmentWorth\" placeholder=\"worth\">");
+		out.println("					</div>");
+		out.println("					<div class=\"col\">");
+		out.println("						<input type=\"submit\" class=\"btn btn-primary\" value=\"Add Assessment\">");
+		out.println("					</div>");
+		out.println("				</div>");
+		out.println("			</form>");
+		out.println("		</div>");
+		out.println("		</div>");
 		
 		out.println("	</div>");
 		out.println("</body>");

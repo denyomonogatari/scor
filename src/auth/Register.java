@@ -127,6 +127,10 @@ public class Register extends HttpServlet {
 		cs3220.addAssessment(assessment9);
 
 		spring2018.addCourse(cs3220);
+		
+		GradingScale gradingScale2 = new GradingScale(94, 90, 87, 84, 80, 77, 74, 70, 67, 64, 60);
+		Course ee3445 = new Course("EE 3445", 3, gradingScale2);
+		spring2018.addCourse(ee3445);
 
 		johnDoe.addSemester(spring2018);
 
