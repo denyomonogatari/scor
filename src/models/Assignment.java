@@ -15,14 +15,14 @@ public class Assignment {
 
 	private Date dueDate;
 
-	private AssignmentType type;
+	private String type;
 
-	public Assignment(String name, double score, double total, AssignmentType type) {
+	public Assignment(String name, double score, double total, String type) {
 		this(name, score, total, true, false, null, null, type);
 	}
 	
 	public Assignment(String name, double score, double total, boolean isCompleted, boolean isExtraCredit,
-			Date dateAssigned, Date dueDate, AssignmentType type) {
+			Date dateAssigned, Date dueDate, String type) {
 		this.name = name;
 		this.score = score;
 		this.total = total;
@@ -89,11 +89,11 @@ public class Assignment {
 		this.dueDate = dueDate;
 	}
 
-	public AssignmentType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(AssignmentType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
