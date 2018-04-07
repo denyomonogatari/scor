@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import models.Assessment;
-import models.Assignment;
-import models.AssignmentType;
 import models.Course;
 import models.User;
 
@@ -37,7 +35,7 @@ public class AddAssessment extends HttpServlet {
 		
 		Course course = user.getSemesters().get(semesterId).getCourses().get(courseId);
 		
-		AssignmentType assessmentType = AssignmentType.valueOf(request.getParameter("assessmentType"));
+		String assessmentType = request.getParameter("assessmentType");
 		double worth = Double.parseDouble(request.getParameter("assessmentWorth"));
 		
 		course.addAssessment(new Assessment(assessmentType, worth));
