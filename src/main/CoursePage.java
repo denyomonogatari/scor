@@ -107,9 +107,21 @@ public class CoursePage extends HttpServlet {
 			out.println("				</table>");
 			
 		}
-
+		out.println("</div>");
+		
 		out.println("		</div>");
 
+		out.println("<div class\"row\">");
+		out.print("<form action=\"../actions/AddAssessment\">");
+		out.println("		<input type=\"hidden\" name=\"semesterId\" value=\"" + semesterId + "\">");
+		out.println("		<input type=\"hidden\" name=\"courseId\" value=\"" + courseId + "\">");
+
+		out.println("		<input type=\"text\" class= \"form-control\" name=\"assessmentType\" placeholder=\"type\">");
+		out.println("		<input type=\"text\" class= \"form-control\" name=\"assessmentWorth\" placeholder=\"worth\">");
+		out.println("		<input type=\"submit\" class=\"btn btn-primary\" value=\"Add Assessment\">");
+		out.println("</form>");
+		out.println("</div>");
+		
 		out.println("	</div>");
 		out.println("</body>");
 		out.println("</html>");
