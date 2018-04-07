@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class CourseWorkHandler {
 
-	private Map<AssignmentType, Assessment> courseWork;
+	private Map<String, Assessment> courseWork;
 	private double maxPoints;
 	private double earnedPoints;
 	private double currentPercentage;
@@ -21,11 +21,11 @@ public class CourseWorkHandler {
 		this.currentPercentage = 0;
 	}
 
-	public Map<AssignmentType, Assessment> getCourseWork() {
+	public Map<String, Assessment> getCourseWork() {
 		return courseWork;
 	}
 
-	public void setCourseWorkMap(Map<AssignmentType, Assessment> courseWork) {
+	public void setCourseWorkMap(Map<String, Assessment> courseWork) {
 		this.courseWork = courseWork;
 	}
 
@@ -79,7 +79,7 @@ public class CourseWorkHandler {
 		return (earned / max) * 100;
 	}
 
-	public void deleteAssignment(String assignmentName, AssignmentType type) {
+	public void deleteAssignment(String assignmentName, String type) {
 		Assessment assessment = this.courseWork.get(type);
 		ArrayList<Assignment> assignments = assessment.getAssignments();
 		for (Assignment assignment : assignments) {
@@ -90,12 +90,12 @@ public class CourseWorkHandler {
 		}
 	}
 
-	public double getCategoryGrade(AssignmentType type) {
+	public double getCategoryGrade(String type) {
 		Assessment assessment = this.courseWork.get(type);
 		return assessment.getScore();
 	}
 
-	public ArrayList<Assignment> getCategoryWork(AssignmentType type) {
+	public ArrayList<Assignment> getCategoryWork(String type) {
 		Assessment assessment = this.courseWork.get(type);
 		return assessment.getAssignments();
 	}

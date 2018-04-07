@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import models.Assessment;
 import models.Assignment;
-import models.AssignmentType;
 import models.Course;
 import models.User;
 

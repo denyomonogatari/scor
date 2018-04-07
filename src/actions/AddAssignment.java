@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import models.Assessment;
 import models.Assignment;
-import models.AssignmentType;
 import models.User;
 
 @WebServlet("/actions/AddAssignment")
@@ -40,7 +39,7 @@ public class AddAssignment extends HttpServlet {
 		String assignmentName = request.getParameter("assignmentName");
 		double assignmentScore = Double.parseDouble(request.getParameter("assignmentScore"));
 		double assignmentWorth = Double.parseDouble(request.getParameter("assignmentWorth"));
-		AssignmentType assignmentType = AssignmentType.valueOf(request.getParameter("assignmentType"));
+		String assignmentType = request.getParameter("assignmentType");
 		
 		assessment.getAssignments().add(new Assignment(assignmentName, assignmentScore, assignmentWorth, assignmentType));
 

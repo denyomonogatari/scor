@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Assessment;
 import models.Assignment;
-import models.AssignmentType;
 import models.Course;
 import models.GradingScale;
 import models.Semester;
@@ -38,19 +37,19 @@ public class Register extends HttpServlet {
 
 		Course cs3035 = new Course("CS 3035", 3, gradingScale1);
 
-		Assessment assessment1 = new Assessment(AssignmentType.LABSANDQUIZZES, 30);
-		Assessment assessment2 = new Assessment(AssignmentType.MIDTERM, 20);
-		Assessment assessment3 = new Assessment(AssignmentType.HOMEWORK, 30);
-		Assessment assessment4 = new Assessment(AssignmentType.FINAL, 20);
+		Assessment assessment1 = new Assessment("Labs and Quizzes", 30);
+		Assessment assessment2 = new Assessment("Midterm", 20);
+		Assessment assessment3 = new Assessment("Homework", 30);
+		Assessment assessment4 = new Assessment("Final", 20);
 
 		Assignment assignment1 = new Assignment("Lab1", 80, 100, true, false, null, null,
-				AssignmentType.LABSANDQUIZZES);
-		Assignment assignment2 = new Assignment("Lab2", 10, 13, true, false, null, null, AssignmentType.LABSANDQUIZZES);
-		Assignment assignment3 = new Assignment("Lab3", 11, 13, true, false, null, null, AssignmentType.LABSANDQUIZZES);
-		Assignment assignment4 = new Assignment("Midterm", 30, 37, true, false, null, null, AssignmentType.MIDTERM);
-		Assignment assignment5 = new Assignment("Homework 1", 9, 10, true, false, null, null, AssignmentType.HOMEWORK);
-		Assignment assignment6 = new Assignment("Homework 2", 8, 10, true, false, null, null, AssignmentType.HOMEWORK);
-		Assignment assignment7 = new Assignment("Final", 83, 100, true, false, null, null, AssignmentType.FINAL);
+				"Labs and Quizzes");
+		Assignment assignment2 = new Assignment("Lab2", 10, 13, true, false, null, null, "Labs and Quizzes");
+		Assignment assignment3 = new Assignment("Lab3", 11, 13, true, false, null, null, "Labs and Quizzes");
+		Assignment assignment4 = new Assignment("Midterm", 30, 37, true, false, null, null, "Midterm");
+		Assignment assignment5 = new Assignment("Homework 1", 9, 10, true, false, null, null, "Homework");
+		Assignment assignment6 = new Assignment("Homework 2", 8, 10, true, false, null, null, "Homework");
+		Assignment assignment7 = new Assignment("Final", 83, 100, true, false, null, null, "Final");
 
 		assessment1.addAssignment(assignment1);
 		assessment1.addAssignment(assignment2);
@@ -69,39 +68,39 @@ public class Register extends HttpServlet {
 
 		Course cs3220 = new Course("CS 3220", 3, gradingScale1);
 
-		Assessment assessment5 = new Assessment(AssignmentType.HOMEWORKANDLABS, 20);
-		Assessment assessment6 = new Assessment(AssignmentType.QUIZ, 25);
-		Assessment assessment7 = new Assessment(AssignmentType.MIDTERM, 25);
-		Assessment assessment8 = new Assessment(AssignmentType.FINAL, 25);
-		Assessment assessment9 = new Assessment(AssignmentType.ATTENDANCE, 5);
+		Assessment assessment5 = new Assessment("Homework and Labs", 20);
+		Assessment assessment6 = new Assessment("Quizzes", 25);
+		Assessment assessment7 = new Assessment("Midterm", 25);
+		Assessment assessment8 = new Assessment("Final", 25);
+		Assessment assessment9 = new Assessment("Attendance", 5);
 
 		Assignment assignment8 = new Assignment("Homework 1 Two Paragraphs", 100, 100, true, false, null, null,
-				AssignmentType.HOMEWORKANDLABS);
+				"Homework and Labs");
 		Assignment assignment9 = new Assignment("Homework 2 Notes", 90, 100, true, false, null, null,
-				AssignmentType.HOMEWORKANDLABS);
+				"Homework and Labs");
 		Assignment assignment10 = new Assignment("Lab 1 Deployement", 100, 100, true, false, null, null,
-				AssignmentType.HOMEWORKANDLABS);
+				"Homework and Labs");
 		Assignment assignment11 = new Assignment("Lab 2 Request Summary", 80, 100, true, false, null, null,
-				AssignmentType.HOMEWORKANDLABS);
+				"Homework and Labs");
 		Assignment assignment12 = new Assignment("Lab 3 Export to Excel", 90, 100, true, false, null, null,
-				AssignmentType.HOMEWORKANDLABS);
+				"Homework and Labs");
 
 		Assignment assignment13 = new Assignment("HTML, CSS, and Deployment", 8, 10, true, false, null, null,
-				AssignmentType.QUIZ);
-		Assignment assignment14 = new Assignment("HTTP Requests", 9, 10, true, false, null, null, AssignmentType.QUIZ);
-		Assignment assignment15 = new Assignment("HTTP Responses", 8, 10, true, false, null, null, AssignmentType.QUIZ);
+				"Quizzes");
+		Assignment assignment14 = new Assignment("HTTP Requests", 9, 10, true, false, null, null, "Quizzes");
+		Assignment assignment15 = new Assignment("HTTP Responses", 8, 10, true, false, null, null, "Quizzes");
 		Assignment assignment16 = new Assignment("Cookies  and Session", 9, 10, true, false, null, null,
-				AssignmentType.QUIZ);
+				"Quizzes");
 		Assignment assignment17 = new Assignment("JSP Scripting Elements and Directives", 10, 10, true, false, null,
-				null, AssignmentType.QUIZ);
+				null, "Quizzes");
 
 		Assignment assignment18 = new Assignment("Midterm Exam", 95, 100, true, false, null, null,
-				AssignmentType.MIDTERM);
+				"Midterm");
 
-		Assignment assignment19 = new Assignment("Final", 85, 100, true, false, null, null, AssignmentType.FINAL);
+		Assignment assignment19 = new Assignment("Final", 85, 100, true, false, null, null, "Final");
 
 		Assignment assignment20 = new Assignment("01-22-2018", 1, 1, true, false, null, null,
-				AssignmentType.HOMEWORKANDLABS);
+				"Attendance");
 
 		assessment5.addAssignment(assignment8);
 		assessment5.addAssignment(assignment9);

@@ -3,25 +3,25 @@ package models;
 import java.util.ArrayList;
 
 public class Assessment {
-	private AssignmentType type;
+	private String type;
 	private double worth;
 	ArrayList<Assignment> assignments = new ArrayList<>();
 
-	public Assessment(AssignmentType type, double worth) {
+	public Assessment(String type, double worth) {
 		this(type, worth, new ArrayList<Assignment>());
 	}
 
-	public Assessment(AssignmentType type, double worth, ArrayList<Assignment> assignments) {
+	public Assessment(String type, double worth, ArrayList<Assignment> assignments) {
 		this.setType(type);
 		this.setWorth(worth);
 		this.assignments = assignments;
 	}
 
-	public AssignmentType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(AssignmentType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
