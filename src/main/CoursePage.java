@@ -50,8 +50,19 @@ public class CoursePage extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("	<div class=\"container mb-5\">");
-		out.println("		<p class=\"text-right\"><a href=\"../auth/Logout\">Logout</a></p>");
-		out.println("		<h1 class=\"display-2\">Hello, " + user.getFirst() + "</h1>");
+
+		out.println("		<ul class=\"nav justify-content-center\">");
+		out.println("		  <li class=\"nav-item\">");
+		out.println("		    <a class=\"nav-link\" href=\"MainPage\">Back to Main Page</a>");
+		out.println("		  </li>");
+		out.println("		  <li class=\"nav-item\">");
+		out.println("		  	<a class=\"nav-link\" href=\"SemesterPage?semesterId=" + Integer.parseInt(request.getParameter("semesterId")) + "\">Back to Semester Page</a>");
+		out.println("		  </li>");
+		out.println("		  <li class=\"nav-item\">");
+		out.println("			<a class=\"nav-link\" href=\"../auth/Logout\">Logout</a>");
+		out.println("		  </li>");
+		out.println("		</ul>");
+		
 		out.println("		<div class=\"row\">");
 		out.println("			<div class=\"col-12\">");
 		
@@ -60,7 +71,7 @@ public class CoursePage extends HttpServlet {
 		
 		Course course = user.getSemesters().get(semesterId).getCourses().get(courseId); // get course
 		
-		out.println("				<h2>" + course.getName() + "</h2>");
+		out.println("				<h1>" + course.getName() + "</h1>");
 		out.println("				<h2>Percent: <strong>" + String.format("%.2f", course.getPercentEarned()) + "%</strong> out of 100.00%</h2>");
 		out.println("				<h2>Grade: <strong>" + course.getGrade() + "</strong></h2>");
 		
