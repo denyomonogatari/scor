@@ -54,10 +54,13 @@ public class Assessment {
 				total += assignment.isExtraCredit() ? 0 : assignment.getTotal();
 			}
 		}
-
-		// 0.0/0.0 returns NaN
-		// any score/0.0 returns Infinity
-		return (score / total) * worth;// (worth / 100);
+		
+		// if total is zero (the assessment has no assignments) return 0
+		// else calculate (score / total) * worth;
+		if (Math.abs(total) <  1E-14)
+			return 0;
+		else 
+			return (score / total) * worth;
 	}
 
 	public String toString() {

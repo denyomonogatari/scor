@@ -73,12 +73,30 @@ public class Course {
 	}
 
 	public double getPercentEarned() {
-		double total = 0;
-		for (Assessment assessment : this.cwh.getAssessments()) {
-			total += assessment.getScore();
+		ArrayList<Assessment> assessments = cwh.getAssessments();
+		
+		if (assessments.isEmpty()) 
+			return 0;
+		
+		double percentEarned = 0;
+		double assessmentWorthTotal = 0;
+		for (int i = 0; i < assessments.size(); i++) {
+			if (!assessments.get(i).getAssignments().isEmpty()) {
+				double assignmentScoreTotal = 0;
+				double assignmentWorthTotal = 0;
+				for (int j = 0; j < assessments.get(i).getAssignments().size(); j++) {
+					assignmentScoreTotal += assessments.get(i).getAssignments().get(j).getScore();
+					assignmentWorthTotal += assessments.get(i).getAssignments().get(j).getTotal();
+				}
+				percentEarned += (assignmentScoreTotal / assignmentWorthTotal) *  assessments.get(i).getWorth();
+				assessmentWorthTotal += assessments.get(i).getWorth();
+			}
 		}
-
-		return total;
+		
+		if (Math.abs(assessmentWorthTotal) < 1E-14)
+			return 0;
+			
+		return (percentEarned / assessmentWorthTotal) * 100;
 	}
 
 	public String getGrade() {
