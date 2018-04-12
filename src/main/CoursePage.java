@@ -74,10 +74,14 @@ public class CoursePage extends HttpServlet {
 		out.println("				<h1>" + course.getName() + "</h1>");
 		out.println("				<h2>Percent: <strong>" + String.format("%.2f", course.getPercentEarned()) + "%</strong> out of 100.00%</h2>");
 		out.println("				<h2>Grade: <strong>" + course.getGrade() + "</strong></h2>");
-		
+		out.println("</br>");
 		ArrayList<Assessment> assessments = course.getAssessments();
 		for (int i = 0; i < assessments.size(); i++) { // get assessments for course to display them
-			out.println("				<h3>" + assessments.get(i).getType() + " " + String.format("%.2f %%", assessments.get(i).getScore()) + " out of " + assessments.get(i).getWorth() + "%</h3>");
+//			out.println("				<h3>" + assessments.get(i).getType() + " " + String.format("%.2f %%", assessments.get(i).getScore()) + " out of " + assessments.get(i).getWorth() + "%</h3>");
+			out.println("				<h3>" + assessments.get(i).getType() + " " + String.format("%.2f %%", assessments.get(i).getScore()) + " out of " + assessments.get(i).getWorth() + "%");
+			out.println("					<a class=\"btn btn-secondary\" href=\"#\" role=\"button\">Edit</a>");
+			out.println("					<a class=\"btn btn-danger\" href=\"../actions/DeleteAssessment?semesterId=" + semesterId + "&courseId=" + courseId +  "&assessmentId=" + i + "\" role=\"button\">Delete</a>");
+			out.println("				</h3>");
 			out.println("				<table class=\"table table-hover\">");
 			out.println("					<tr>");
 			out.println("						<th>Name</th>");
