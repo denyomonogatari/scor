@@ -51,8 +51,13 @@ public class MainPage extends HttpServlet {
 		out.println("<div class=\"container\">");
 		out.println("	<p class=\"text-right\"><a href=\"../auth/Logout\">Logout</a></p>");
 		out.println("	<h1 class=\"display-2\">Hello, " + user.getFirst() + "</h1>");
+		out.println("	<nav>");
+		out.println("		<a href=\"FlashCardDecks\">Flash Cards</a> | ");
+		out.println("		<a href=\"#\">Equation Solver</a>");
+		out.println("	</nav>");
 		out.println("	<div class=\"row\">");
 		out.println("		<div class=\"col-6\">");
+		
 		out.println("			<h2>Semesters</h2>");
 		out.println("			<ul>");
 		
