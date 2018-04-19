@@ -22,14 +22,14 @@ public class FlashCardManager {
 		FlashCard c4 = new FlashCard("what is the weenies name?", "kaia", 3);
 		FlashCard c5 = new FlashCard("what is the bears name?", "oso", 4);
 		FlashCard c6 = new FlashCard("who is that white dog?", "rocky", 5);
-		
+
 		d1.addFlashCard(c1);
 		d1.addFlashCard(c2);
 		d1.addFlashCard(c3);
 		d1.addFlashCard(c4);
 		d1.addFlashCard(c5);
 		d1.addFlashCard(c6);
-		
+
 		String name2 = "c++";
 		FlashCardDeck d2 = new FlashCardDeck(name2);
 
@@ -56,6 +56,18 @@ public class FlashCardManager {
 
 	public ArrayList<FlashCardDeck> getDecks() {
 		return decks;
+	}
+
+	public FlashCardDeck getDeck(String name) {
+		System.out.println(name);
+		return this.decks.get(0);
+//		for (FlashCardDeck deck : this.decks) {
+//			if (deck.getDeckName().equals(name)) {
+//				return deck;
+//			}
+//		}
+//
+//		return null;
 	}
 
 	public void setDecks(ArrayList<FlashCardDeck> decks) {

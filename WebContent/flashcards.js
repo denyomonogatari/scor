@@ -1,9 +1,17 @@
 /**
  * 
  */
-var deckName = document.getElementById("deckName")
+var deckName = document.getElementById("deckName").value
 //
-var JsonDeck = getJsonData()
+var JsonDeck = getJsonData();
+
+var index = 1
+
+function next() {
+	var dom = document.getElementById("cardHolder")
+	let array = window.state.deck.data
+	dom.innerHTML = array[index++ % (array.length)].question
+}
 
 function getJsonData() {
 
@@ -14,30 +22,32 @@ function getJsonData() {
 	$.ajax({
 
 		type : "GET",
-		url : "/scor/main/GetFlashCardJSON",
+		url : "/scor/main/GetFlashCardJSON?name=\"" + deckName + "\"",
 		dataType : 'json',
 		success : function(json) {
 
-			var info1 = json.flashCardSet;
-
-			$.each(info1, function(index, element) {
-				var info = element;
-
-				table = table + "<tr>";
-
-				$.each(info, function(index, element) {
-
-					table = table + "<td>" + element + "</td>"
-				});
-				table = table + "</tr>";
-
-			});
-			table = table += "</table></html>";
-
-			console.log("worked")
-			$("#output").html(table);
-//			
-			
+			// var info1 = json.flashCardSet;
+			//
+			// $.each(info1, function(index, element) {
+			// var info = element;
+			//
+			// table = table + "<tr>";
+			//
+			// $.each(info, function(index, element) {
+			//
+			// table = table + "<td>" + element + "</td>"
+			// });
+			// table = table + "</tr>";
+			//
+			// });
+			// table = table += "</table></html>";
+			//
+			// console.log("worked")
+			// $("#output").html(table);
+			//			
+			window.state = json
+			//console.log(json)
+			return json
 		},
 		async : true,
 		global : false,

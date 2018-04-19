@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 
+import models.flashcards.FlashCard;
 import models.flashcards.FlashCardDeck;
 import models.flashcards.FlashCardManager;
 
@@ -83,6 +84,14 @@ public class User {
 
 	public ArrayList<FlashCardDeck> getFlashCardDecks() {
 		return this.fcm.getDecks();
+	}
+
+	public ArrayList<FlashCard> getDeck(String name) {
+
+		FlashCardDeck deck = this.fcm.getDeck(name);
+		//System.out.println(deck.getDeckName());
+		return deck.getDeck();
+
 	}
 
 	public double getCumulativeGPA() {

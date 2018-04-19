@@ -66,14 +66,19 @@ public class FlashCards extends HttpServlet {
 		out.println("	<h1>" + deckName + "</h1>");
 		out.println("<div class='center_div'>");
 
-		out.println("	<p>" + deck.get(count % (deck.size())).getQuestion() + "</p>");
+		out.println("	<p id=\"cardHolder\"></p>");
 		out.println("	<input id='deckName' type='hidden' value='" + deckName + "' >");
-		out.println("	<button onclick=\"getJsonData();\">Next</button>");
+		out.println("	<button onclick=\"next();\">Next</button>");
 		count++;
 
-		out.println("<div id=\"output\">");
-		out.println("</div>");
-		
+		out.println("<form action='../actions/AddFlashCard?name=\"" + deckName + "\" method='GET'>");
+		out.println("	<label for='q'>Question</label>");
+		out.println("	<input type='text' name='question' id='q'>");
+		out.println("	<label for='a'>Question</label>");
+		out.println("	<input type='text' name='answer' id='a'>");
+		out.println("	<button>Add</butto>");
+		out.println("</form>");
+
 		out.println("<script type='text/javascript' src='../flashcards.js' ></script>");
 		out.println("</body>");
 		out.println("</html>");
