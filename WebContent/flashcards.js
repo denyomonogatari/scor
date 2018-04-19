@@ -5,13 +5,32 @@ var deckName = document.getElementById("deckName").value
 //
 var JsonDeck = getJsonData();
 
-var index = 1
+var index = 0
+var isOnQuestion = true
 
 function next() {
+	if (!isOnQuestion) {
+		isOnQuestion = true
+	}
 	var dom = document.getElementById("cardHolder")
 	let array = window.state.deck.data
 	dom.innerHTML = array[index++ % (array.length)].question
+
 }
+
+document.getElementById("cardHolder").addEventListener('click', function() {
+	var dom = document.getElementById("cardHolder")
+	let array = window.state.deck.data
+
+	if (isOnQuestion) {
+		dom.innerHTML = array[(index - 1)% (array.length)].answer
+		isOnQuestion = false
+	} else {
+		dom.innerHTML = array[(index - 1)  % (array.length)].question
+		isOnQuestion = true
+	}
+
+})
 
 function getJsonData() {
 
@@ -46,7 +65,7 @@ function getJsonData() {
 			// $("#output").html(table);
 			//			
 			window.state = json
-			//console.log(json)
+			// console.log(json)
 			return json
 		},
 		async : true,
