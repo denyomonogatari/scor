@@ -1,5 +1,8 @@
 package models;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Assignment {
@@ -19,6 +22,10 @@ public class Assignment {
 
 	public Assignment(String name, double score, double total, String type) {
 		this(name, score, total, true, false, null, null, type);
+	}
+	
+	public Assignment(String name, double score, double total, Date dueDate, String type) {
+		this(name, score, total, true, false, null, dueDate, type);
 	}
 	
 	public Assignment(String name, double score, double total, boolean isCompleted, boolean isExtraCredit,
@@ -84,9 +91,17 @@ public class Assignment {
 	public Date getDueDate() {
 		return dueDate;
 	}
-
+	
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
+	}
+	
+	public String getDueDateString() {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		if (dueDate != null)
+			return df.format(dueDate);
+		else 
+			return null;
 	}
 
 	public String getType() {

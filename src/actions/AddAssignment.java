@@ -1,6 +1,10 @@
 package actions;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,7 +45,17 @@ public class AddAssignment extends HttpServlet {
 		double assignmentWorth = Double.parseDouble(request.getParameter("assignmentWorth"));
 		String assignmentType = request.getParameter("assignmentType");
 		
-		assessment.getAssignments().add(new Assignment(assignmentName, assignmentScore, assignmentWorth, assignmentType));
+		String dueDateString = request.getParameter("dueDate");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		Date dueDate = null;
+		try {
+			dueDate = df.parse(dueDateString);
+			response.getWriter().println(dueDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		assessment.getAssignments().add(new Assignment(assignmentName, assignmentScore, assignmentWorth, dueDate, assignmentType));
 
 		response.sendRedirect("../main/CoursePage?semesterId=" + semesterId + "&courseId=" + courseId);
 		

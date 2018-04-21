@@ -1,8 +1,10 @@
 package actions;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,10 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import models.Assessment;
 import models.Assignment;
-import models.Course;
-import models.Semester;
 import models.User;
 
 @WebServlet("/actions/EditAssignment")
@@ -57,6 +56,15 @@ public class EditAssignment extends HttpServlet {
 		String assignmentScore = request.getParameter("assignmentScore");
 		String assignmentWorth = request.getParameter("assignmentWorth");
 		
+		String dueDateString = request.getParameter("dueDate");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		Date dueDate = null;
+		try {
+			dueDate = df.parse(dueDateString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
 		int courseId = Integer.parseInt(request.getParameter("courseId"));
 
@@ -67,6 +75,7 @@ public class EditAssignment extends HttpServlet {
 		assignmentToEdit.setName(assignmentName);
 		assignmentToEdit.setScore(Double.parseDouble(assignmentScore));
 		assignmentToEdit.setTotal(Double.parseDouble(assignmentWorth));
+		assignmentToEdit.setDueDate(dueDate);
 		
 		response.sendRedirect("../main/CoursePage?semesterId=" + semesterId + "&courseId=" + courseId);
 	}

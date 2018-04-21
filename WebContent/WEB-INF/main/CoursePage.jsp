@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
+<%-- check if there is a session scope variable user --%>
+<c:if test="${empty sessionScope.user}">
+  <%-- redirect to Login --%>
+  <c:redirect url="../auth/Login" />
+</c:if>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<title>Course Page</title>
 </head>
-<body>
+<body>	
 	<div class="container mb-5">
 		<ul class="nav justify-content-center">
 		  <li class="nav-item">
@@ -40,6 +46,7 @@
 							<th>Name</th>
 							<th>Score</th>
 							<th>Worth</th>
+							<th>Due Date</th>
 							<th>Options</th>
 						</tr>
 						<c:forEach items="${assessment.assignments}" var="assignment" varStatus="status2">
@@ -48,6 +55,7 @@
 								<td>${assignment.name}</td>
 								<td>${assignment.score}</td>
 								<td>${assignment.total}</td>
+								<td>${assignment.dueDate}</td>
 								<td>
 									<a class="btn btn-primary btn-secondary" href="../actions/EditAssignment${queryString}">Edit</a>
 									<a class="btn btn-primary btn-danger" href="../actions/DeleteAssignment${queryString}">Delete</a>
@@ -64,6 +72,7 @@
 								<td><input type="text" class="form-control" name="assignmentName" placeholder="Name of assignment"></td>
 								<td><input type="text" class="form-control" name="assignmentScore" placeholder="Your score"></td>
 								<td><input type="text" class="form-control" name="assignmentWorth" placeholder="Worth"></td>
+								<td><input type="datetime-local" name="dueDate" class="form-control"></td>
 								<td><input type="submit" class="btn btn-primary" name="add" value="Add"></td>
 							</tr>
 						</form>
