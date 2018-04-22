@@ -20,12 +20,12 @@ public class SemesterPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
+		
+		String semesterId = request.getParameter("semesterId");
 		request.setAttribute("semesterId", semesterId);
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/main/SemesterPage.jsp");
 		requestDispatcher.forward(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

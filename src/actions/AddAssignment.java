@@ -21,10 +21,6 @@ import models.User;
 public class AddAssignment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get a reference to the session
 		HttpSession session = request.getSession();
@@ -38,10 +34,10 @@ public class AddAssignment extends HttpServlet {
 			return;
 		}
 		
+//		// Get information submitted
 		String assignmentName = request.getParameter("assignmentName");
-		double assignmentScore = Double.parseDouble(request.getParameter("assignmentScore"));
-		double assignmentWorth = Double.parseDouble(request.getParameter("assignmentWorth"));
-		String assignmentType = request.getParameter("assignmentType");
+		String assignmentScore = request.getParameter("assignmentScore");
+		String assignmentWorth = request.getParameter("assignmentWorth");
 		
 		String dueDateString = request.getParameter("dueDate");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
@@ -49,7 +45,7 @@ public class AddAssignment extends HttpServlet {
 		try {
 			dueDate = df.parse(dueDateString);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 		}
 		
 		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
@@ -58,8 +54,17 @@ public class AddAssignment extends HttpServlet {
 		
 		Assessment assessment = user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(assessmentId);
 		
-		assessment.getAssignments().add(new Assignment(assignmentName, assignmentScore, assignmentWorth, dueDate, assignmentType));
-
+		boolean assignmentIsDone = Boolean.parseBoolean(request.getParameter("isDone"));
+		if (assignmentIsDone) {
+			assessment.getAssignments().add(new Assignment(assignmentName, Double.parseDouble(assignmentScore), Double.parseDouble(assignmentWorth), dueDate));
+		}
+		else {
+			Assignment newAssignment = new Assignment(assignmentName, 0, 0, dueDate);
+			newAssignment.setCompleted(false);
+			
+			assessment.getAssignments().add(newAssignment);
+		}
+		
 		response.sendRedirect("../main/CoursePage?semesterId=" + semesterId + "&courseId=" + courseId);
 	}
 

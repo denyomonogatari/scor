@@ -88,14 +88,16 @@ public class Course {
 					assignmentScoreTotal += assessments.get(i).getAssignments().get(j).getScore();
 					assignmentWorthTotal += assessments.get(i).getAssignments().get(j).getTotal();
 				}
-				percentEarned += (assignmentScoreTotal / assignmentWorthTotal) *  assessments.get(i).getWorth();
-				assessmentWorthTotal += assessments.get(i).getWorth();
+				if (!Double.isNaN((assignmentScoreTotal / assignmentWorthTotal))) {
+					percentEarned += (assignmentScoreTotal / assignmentWorthTotal) *  assessments.get(i).getWorth();
+					assessmentWorthTotal += assessments.get(i).getWorth();
+				}
 			}
 		}
 		
-		if (Math.abs(assessmentWorthTotal) < 1E-14)
+		if (Double.isNaN(percentEarned / assessmentWorthTotal))
 			return 0;
-			
+		
 		return (percentEarned / assessmentWorthTotal) * 100;
 	}
 

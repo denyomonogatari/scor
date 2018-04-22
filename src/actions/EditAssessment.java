@@ -20,20 +20,6 @@ import models.User;
 public class EditAssessment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
-		int courseId = Integer.parseInt(request.getParameter("courseId"));
-		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
-		
-		request.setAttribute("semesterId", semesterId);
-		request.setAttribute("courseId", courseId);
-		request.setAttribute("assessmentId", assessmentId);
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/actions/EditAssessment.jsp");
-		requestDispatcher.forward(request, response);
-		
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get a reference to the session
 		HttpSession session = request.getSession();
@@ -47,21 +33,17 @@ public class EditAssessment extends HttpServlet {
 			return;
 		}
 
-		// Get information submitted
-		String assessmentType = request.getParameter("assessmentType");
-		String assessmentWorth = request.getParameter("assessmentWorth");
-
 		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
 		int courseId = Integer.parseInt(request.getParameter("courseId"));
-
 		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
 
 		Course course = user.getSemesters().get(semesterId).getCourses().get(courseId);
-		
-		Assessment assessmentToEdit = user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(assessmentId);
-		
+		Assessment assessmentToEdit = user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(assessmentId); // Find assessment to edit
 		ArrayList<Assignment> assignments = assessmentToEdit.getAssignments();
 		
+		// Get information submitted
+		String assessmentType = request.getParameter("assessmentType");
+		String assessmentWorth = request.getParameter("assessmentWorth");
 		
 		Assessment assessmentCopy = new Assessment(assessmentType, Double.parseDouble(assessmentWorth));
 		for (Assignment assignment : assignments) 

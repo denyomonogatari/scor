@@ -58,11 +58,6 @@
 				<br>
 				<c:set var="assessments" scope="page" value="${course.assessments}"/>
 				<c:forEach items="${assessments}" var="assessment" varStatus="status1">
-<%--  					<h3>
-						${assessment.type} <fmt:formatNumber type="number" maxFractionDigits="2" value="${assessment.score}"/>% out of ${assessment.worth}%
-						<a href="../actions/EditAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}">Edit</a>
-						<a href="../actions/DeleteAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}">Delete</a>
-					</h3> --%>
 					<form action="../actions/EditAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}" method="post" class="form-inline">
 						<div class="form-group"> 
 							<h2><input type="text" class="form-control-plaintext" name="assessmentType" value="${assessment.type}"></h2>
@@ -109,20 +104,20 @@
 		                            <input type="text" class="form-control" placeholder="Assignment name" name="assignmentName" value="${assignment.name}" required>
 		                        </div>
 		                        <div class="col-2">
-		                            <input type="text" class="form-control" placeholder="Score" name="assignmentScore" value="${assignment.score}" required>
+		                            <input type="text" class="form-control" placeholder="Score" name="assignmentScore" value="${assignment.score}">
 		                        </div>
 		                        <div class="col-2">
-		                            <input type="text" class="form-control" placeholder="Worth" name="assignmentWorth" value="${assignment.total}" required>
+		                            <input type="text" class="form-control" placeholder="Worth" name="assignmentWorth" value="${assignment.total}">
 		                        </div>
 		                        <div class="col-1">
-		                            <select class="custom-select" id="isDone" onchange="checkDone()" name="isDone">
-		                                <option value="true">Yes</option>
-		                                <option value="false" selected>No</option>
+		                            <select class="custom-select" id="isDone" name="isDone" >
+							            <option value="true" <c:if test="${assignment.completed}">selected</c:if>>Yes</option>
+		                                <option value="false" <c:if test="${not assignment.completed}">selected</c:if>>No</option>
 		                            </select>
 		                        </div>
 		                        <div class="col-3"> 
 		                        	<!-- TODO Fix disability when Done? is yes -->
-		                            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate" value="${assignment.dueDateString}" required>
+		                            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate" value="${assignment.dueDateString}">
 		                        </div>
 		                        <div class="col-2 center">
 		                            <input type="submit" class="btn btn-secondary" value="Save" required>
@@ -138,19 +133,19 @@
 	                            <input type="text" class="form-control" placeholder="Assignment name" name="assignmentName" required>
 	                        </div>
 	                        <div class="col-2">
-	                            <input type="text" class="form-control" placeholder="Score" name="assignmentScore" required>
+	                            <input type="text" class="form-control" placeholder="Score" name="assignmentScore">
 	                        </div>
 	                        <div class="col-2">
-	                            <input type="text" class="form-control" placeholder="Worth" name="assignmentWorth" required>
+	                            <input type="text" class="form-control" placeholder="Worth" name="assignmentWorth">
 	                        </div>
 	                        <div class="col-1">
-	                            <select class="custom-select" id="isDone">
-	                                <option value="1">Yes</option>
-	                                <option value="2" selected>No</option>
+	                            <select class="custom-select" id="isDone" name="isDone">
+	                                <option value="true">Yes</option>
+	                                <option value="false">No</option>
 	                            </select>
 	                        </div>
 	                        <div class="col-3">
-	                            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate" required>
+	                            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate">
 	                        </div>
 	                        <div class="col-2 left">
 	                            <input type="submit" class="btn btn-primary" value="Add" required>

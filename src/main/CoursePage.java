@@ -22,15 +22,15 @@ public class CoursePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
+		
+		String semesterId = request.getParameter("semesterId");
 		request.setAttribute("semesterId", semesterId);
 		
-		int courseId = Integer.parseInt(request.getParameter("courseId"));
+		String courseId = request.getParameter("courseId");
 		request.setAttribute("courseId", courseId);
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/main/CoursePage.jsp");
 		requestDispatcher.forward(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

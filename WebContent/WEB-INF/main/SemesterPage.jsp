@@ -18,7 +18,6 @@
 <body>
 	<div class="container">
 		<p class="text-right"><a href="../auth/Logout">Logout</a></p>
-		<h1 class="display-2">Hello, ${user.first}</h1>
 		<div class="row">
 			<div class="col-6">
 				<h2>Courses</h2>

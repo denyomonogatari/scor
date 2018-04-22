@@ -20,6 +20,14 @@ public class Assignment {
 
 	private String type;
 
+	public Assignment(String name, double score, double total) {
+		this(name, score, total, true, false, null, null, null);
+	}
+	
+	public Assignment(String name, double score, double total, Date dueDate) {
+		this(name, score, total, true, false, null, dueDate, null);
+	}
+	
 	public Assignment(String name, double score, double total, String type) {
 		this(name, score, total, true, false, null, null, type);
 	}

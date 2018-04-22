@@ -21,22 +21,6 @@ import models.User;
 public class EditAssignment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
-		int courseId = Integer.parseInt(request.getParameter("courseId"));
-		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
-		int assignmentId = Integer.parseInt(request.getParameter("assignmentId"));
-		
-		request.setAttribute("semesterId", semesterId);
-		request.setAttribute("courseId", courseId);
-		request.setAttribute("assessmentId", assessmentId);
-		request.setAttribute("assignmentId", assignmentId);
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/actions/EditAssignment.jsp");
-		requestDispatcher.forward(request, response);
-		
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Get a reference to the session
@@ -62,7 +46,7 @@ public class EditAssignment extends HttpServlet {
 		try {
 			dueDate = df.parse(dueDateString);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 		}
 		
 		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
@@ -71,11 +55,23 @@ public class EditAssignment extends HttpServlet {
 		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
 		int assignmentId = Integer.parseInt(request.getParameter("assignmentId"));
 		
+//		// Get assignment to edit and edit it
 		Assignment assignmentToEdit = user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(assessmentId).getAssignments().get(assignmentId);
 		assignmentToEdit.setName(assignmentName);
-		assignmentToEdit.setScore(Double.parseDouble(assignmentScore));
-		assignmentToEdit.setTotal(Double.parseDouble(assignmentWorth));
 		assignmentToEdit.setDueDate(dueDate);
+		
+		boolean assignmentIsDone = Boolean.parseBoolean(request.getParameter("isDone"));
+		
+		if (assignmentIsDone) {
+			assignmentToEdit.setScore(Double.parseDouble(assignmentScore));
+			assignmentToEdit.setTotal(Double.parseDouble(assignmentWorth));
+			assignmentToEdit.setCompleted(true);
+		}
+		else {
+			assignmentToEdit.setScore(0);
+			assignmentToEdit.setTotal(0);
+			assignmentToEdit.setCompleted(false);
+		}
 		
 		response.sendRedirect("../main/CoursePage?semesterId=" + semesterId + "&courseId=" + courseId);
 	}
