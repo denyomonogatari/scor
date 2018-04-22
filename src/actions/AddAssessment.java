@@ -18,6 +18,10 @@ public class AddAssessment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get a reference to the session
 		HttpSession session = request.getSession();
 
@@ -29,22 +33,18 @@ public class AddAssessment extends HttpServlet {
 			response.sendRedirect("../auth/Login");
 			return;
 		}
-		
+
 		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
 		int courseId = Integer.parseInt(request.getParameter("courseId"));
-		
+
 		Course course = user.getSemesters().get(semesterId).getCourses().get(courseId);
-		
+
 		String assessmentType = request.getParameter("assessmentType");
 		double worth = Double.parseDouble(request.getParameter("assessmentWorth"));
-		
-		course.addAssessment(new Assessment(assessmentType, worth));
-		
-		response.sendRedirect("../main/CoursePage?semesterId=" + semesterId + "&courseId=" + courseId);
-	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		course.addAssessment(new Assessment(assessmentType, worth));
+
+		response.sendRedirect("../main/CoursePage?semesterId=" + semesterId + "&courseId=" + courseId);
 	}
 
 }

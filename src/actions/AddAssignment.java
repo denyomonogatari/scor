@@ -22,6 +22,10 @@ public class AddAssignment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get a reference to the session
 		HttpSession session = request.getSession();
 
@@ -34,12 +38,6 @@ public class AddAssignment extends HttpServlet {
 			return;
 		}
 		
-		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
-		int courseId = Integer.parseInt(request.getParameter("courseId"));
-		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
-		
-		Assessment assessment = user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(assessmentId);
-		
 		String assignmentName = request.getParameter("assignmentName");
 		double assignmentScore = Double.parseDouble(request.getParameter("assignmentScore"));
 		double assignmentWorth = Double.parseDouble(request.getParameter("assignmentWorth"));
@@ -50,19 +48,19 @@ public class AddAssignment extends HttpServlet {
 		Date dueDate = null;
 		try {
 			dueDate = df.parse(dueDateString);
-			response.getWriter().println(dueDate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
+		int semesterId = Integer.parseInt(request.getParameter("semesterId"));
+		int courseId = Integer.parseInt(request.getParameter("courseId"));
+		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
+		
+		Assessment assessment = user.getSemesters().get(semesterId).getCourses().get(courseId).getAssessments().get(assessmentId);
+		
 		assessment.getAssignments().add(new Assignment(assignmentName, assignmentScore, assignmentWorth, dueDate, assignmentType));
 
 		response.sendRedirect("../main/CoursePage?semesterId=" + semesterId + "&courseId=" + courseId);
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }
