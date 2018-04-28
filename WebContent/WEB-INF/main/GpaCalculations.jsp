@@ -21,32 +21,6 @@
     <link rel="icon" sizes="192x192" href="/assets/images/icons/icon-192x192.png">
 
 
-    <script type="application/ld+json">
-{ "@context" : "https://schema.org",
-  "@type" : "WebSite",
-  "url" : "https://gpacalculator.io",
-  "name" : "GPA Calculator",
-  "image" : "https://gpacalculator.io/assets/images/gpa-calculator.jpg",
-  "description" : "",
-  "sameAs" : [
-  ],
-  "copyrightYear" : "2018",
-  "copyrightHolder" : [
-    { "@type" : "Organization",
-      "url" : "https://wasai.co",
-      "name" : "Wasai",
-      "logo" : "https://gpacalculator.io/assets/images/wasai-logo.png",
-      "contactPoint" : [
-        { "@type" : "ContactPoint",
-          "url" : "https://wasai.co",
-          "email" : "gpacalculator@wasai.co",
-          "contactType" : "customer service"
-        }
-      ]
-    }
-  ]
-}
-</script>
   </head>
 
   <body class="college-gpa-calculator college-gpa-calculator_index" data-calculator='gpa'  itemscope itemtype="https://schema.org/WebPage">
