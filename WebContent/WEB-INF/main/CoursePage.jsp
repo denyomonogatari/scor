@@ -37,8 +37,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="MainPage">Home<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+<%--                 <li class="nav-item">
                     <a class="nav-link" href="SemesterPage?semesterId=${semesterId}">Courses</a>
+                </li> --%>
+                <li class="nav-item">
+                    <a class="nav-link" href="UpcomingAssignmentsPage">Upcoming Assignments</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../auth/Logout">Logout</a>
