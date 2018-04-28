@@ -16,8 +16,29 @@
 	<title>Main Page</title>
 </head>
 <body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">    
+        <a class="navbar-brand" href="#">SCOR</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="MainPage">Home<span class="sr-only">(current)</span></a>
+                </li>
+<%--                 <li class="nav-item">
+                    <a class="nav-link" href="SemesterPage?semesterId=${semesterId}">Courses</a>
+                </li> --%>
+                <li class="nav-item">
+                    <a class="nav-link" href="UpcomingAssignmentsPage">Upcoming Assignments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../auth/Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 	<div class="container">
-		<p class="text-right"><a href="../auth/Logout">Logout</a></p>
 		<h1 class="display-2">Hello, ${user.first}</h1>
 		<div class="row">
 			<div class="col-6">
