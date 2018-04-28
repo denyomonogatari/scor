@@ -42,8 +42,12 @@
 			<div class="col-6">
 				<h2>Dates</h2>
 				<p>All your upcoming events go here.</p>
+				
+				
 			</div>
+			
 		</div>
 	</div>	
+	
 </body>
 </html>
