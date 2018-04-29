@@ -13,7 +13,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-        .center{
+        .center {
             text-align: center;
         }
 
@@ -21,9 +21,18 @@
             text-align: left;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script> 
+		$(document).ready(function(){
+		    $('.assessmentTypeTitle').click(function(){
+		    	$('#'+$(this).data('id')).slideToggle("slow");
+			});
+		});
+	</script>
 	<title>Course Page</title>
 </head>
 <body>
@@ -60,7 +69,7 @@
 				<c:forEach items="${assessments}" var="assessment" varStatus="status1">
 					<form action="../actions/EditAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}" method="post" class="form-inline">
 						<div class="form-group"> 
-							<h2><input type="text" class="form-control-plaintext" name="assessmentType" value="${assessment.type}"></h2>
+							<h2><input type="text" class="form-control-plaintext assessmentTypeTitle" data-id="div${status1.index}" name="assessmentType" value="${assessment.type}"></h2>
 					  	</div>
 					  	<div class="form-group">
  					  		<div class="input-group">
@@ -74,84 +83,86 @@
 					    	<a href="../actions/DeleteAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}">Delete</a>
 					  	</div>
 					</form>
-					<div class="form-row table">
-	                    <div class="col-2 center">
-	                        <strong class="center">Name of Assignment</strong>
-	                    </div>
-	                    <div class="col-2 center">
-	                        <strong>Score</strong>
-	                    </div>
-	                    <div class="col-2 center">
-	                        <strong>Worth</strong>
-	                    </div>
-	                    <div class="col-1 center">
-	                        <strong>Done?</strong>
-	                    </div>
-	                    <div class="col-3 center">
-	                        <strong>Due date</strong>
-	                    </div>
-	                    <div class="col-2 center">
-	                        <strong>Options</strong>
-	                    </div>
-                	</div>
-                	<!-- start of form -->
-                	<c:forEach items="${assessment.assignments}" var="assignment" varStatus="status2">
-                		<c:set var="queryString" scope="page" value="?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}&assignmentId=${status2.index}"/> 
-						<form action="../actions/EditAssignment${queryString}" method="post">
+					<div id="div${status1.index}">
+						<div class="form-row table">
+		                    <div class="col-2 center">
+		                        <strong class="center">Name of Assignment</strong>
+		                    </div>
+		                    <div class="col-2 center">
+		                        <strong>Score</strong>
+		                    </div>
+		                    <div class="col-2 center">
+		                        <strong>Worth</strong>
+		                    </div>
+		                    <div class="col-1 center">
+		                        <strong>Done?</strong>
+		                    </div>
+		                    <div class="col-3 center">
+		                        <strong>Due date</strong>
+		                    </div>
+		                    <div class="col-2 center">
+		                        <strong>Options</strong>
+		                    </div>
+	                	</div>
+	                	<!-- start of form -->
+	                	<c:forEach items="${assessment.assignments}" var="assignment" varStatus="status2">
+	                		<c:set var="queryString" scope="page" value="?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}&assignmentId=${status2.index}"/> 
+							<form action="../actions/EditAssignment${queryString}" method="post">
+			                    <div class="form-row table" >
+			                        <!-- <input type="hidden" name="assignmentId" value="Assignment ID"> -->
+			                        <div class="col-2">
+			                            <input type="text" class="form-control" placeholder="Assignment name" name="assignmentName" value="${assignment.name}" required>
+			                        </div>
+			                        <div class="col-2">
+			                            <input type="text" class="form-control" placeholder="Score" name="assignmentScore" value="${assignment.score}">
+			                        </div>
+			                        <div class="col-2">
+			                            <input type="text" class="form-control" placeholder="Worth" name="assignmentWorth" value="${assignment.total}">
+			                        </div>
+			                        <div class="col-1">
+			                            <select class="custom-select" id="isDone" name="isDone" >
+								            <option value="true" <c:if test="${assignment.completed}">selected</c:if>>Yes</option>
+			                                <option value="false" <c:if test="${not assignment.completed}">selected</c:if>>No</option>
+			                            </select>
+			                        </div>
+			                        <div class="col-3"> 
+			                        	<!-- TODO Fix disability when Done? is yes -->
+			                            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate" value="${assignment.dueDateString}">
+			                        </div>
+			                        <div class="col-2 center">
+			                            <input type="submit" class="btn btn-secondary" value="Save" required>
+			                            <a class="btn btn-primary btn-danger" href="../actions/DeleteAssignment${queryString}">Delete</a>
+			                        </div>
+			                    </div>
+		                	</form>
+						</c:forEach>
+						<c:set var="queryString1" scope="page" value="?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}"/> 
+						<form action="../actions/AddAssignment${queryString1}" method="post">
 		                    <div class="form-row table" >
-		                        <!-- <input type="hidden" name="assignmentId" value="Assignment ID"> -->
 		                        <div class="col-2">
-		                            <input type="text" class="form-control" placeholder="Assignment name" name="assignmentName" value="${assignment.name}" required>
+		                            <input type="text" class="form-control" placeholder="Assignment name" name="assignmentName" required>
 		                        </div>
 		                        <div class="col-2">
-		                            <input type="text" class="form-control" placeholder="Score" name="assignmentScore" value="${assignment.score}">
+		                            <input type="text" class="form-control" placeholder="Score" name="assignmentScore">
 		                        </div>
 		                        <div class="col-2">
-		                            <input type="text" class="form-control" placeholder="Worth" name="assignmentWorth" value="${assignment.total}">
+		                            <input type="text" class="form-control" placeholder="Worth" name="assignmentWorth">
 		                        </div>
 		                        <div class="col-1">
-		                            <select class="custom-select" id="isDone" name="isDone" >
-							            <option value="true" <c:if test="${assignment.completed}">selected</c:if>>Yes</option>
-		                                <option value="false" <c:if test="${not assignment.completed}">selected</c:if>>No</option>
+		                            <select class="custom-select" id="isDone" name="isDone">
+		                                <option value="true">Yes</option>
+		                                <option value="false">No</option>
 		                            </select>
 		                        </div>
-		                        <div class="col-3"> 
-		                        	<!-- TODO Fix disability when Done? is yes -->
-		                            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate" value="${assignment.dueDateString}">
+		                        <div class="col-3">
+		                            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate">
 		                        </div>
-		                        <div class="col-2 center">
-		                            <input type="submit" class="btn btn-secondary" value="Save" required>
-		                            <a class="btn btn-primary btn-danger" href="../actions/DeleteAssignment${queryString}">Delete</a>
+		                        <div class="col-2 left">
+		                            <input type="submit" class="btn btn-primary" value="Add" required>
 		                        </div>
 		                    </div>
-	                	</form>
-					</c:forEach>
-					<c:set var="queryString1" scope="page" value="?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}"/> 
-					<form action="../actions/AddAssignment${queryString1}" method="post">
-	                    <div class="form-row table" >
-	                        <div class="col-2">
-	                            <input type="text" class="form-control" placeholder="Assignment name" name="assignmentName" required>
-	                        </div>
-	                        <div class="col-2">
-	                            <input type="text" class="form-control" placeholder="Score" name="assignmentScore">
-	                        </div>
-	                        <div class="col-2">
-	                            <input type="text" class="form-control" placeholder="Worth" name="assignmentWorth">
-	                        </div>
-	                        <div class="col-1">
-	                            <select class="custom-select" id="isDone" name="isDone">
-	                                <option value="true">Yes</option>
-	                                <option value="false">No</option>
-	                            </select>
-	                        </div>
-	                        <div class="col-3">
-	                            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate">
-	                        </div>
-	                        <div class="col-2 left">
-	                            <input type="submit" class="btn btn-primary" value="Add" required>
-	                        </div>
-	                    </div>
-	                </form>
+		                </form>
+	                </div>
 				</c:forEach>
 			</div>
 		</div>
