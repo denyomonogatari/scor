@@ -20,6 +20,10 @@
         .left {
             text-align: left;
         }
+        
+		h2:hover {
+		    background-color: #F5F5F5;
+		}
     </style>
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
@@ -70,7 +74,7 @@
 				<br>
 				<c:set var="assessments" scope="page" value="${course.assessments}"/>
 				<c:forEach items="${assessments}" var="assessment" varStatus="status1">
-					<form action="../actions/EditAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}" method="post" class="form-inline">
+<%-- 					<form action="../actions/EditAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}" method="post" class="form-inline">
 						<div class="form-group"> 
 							<h2><input type="text" class="form-control-plaintext assessmentTypeTitle" data-id="div${status1.index}" name="assessmentType" value="${assessment.type}"></h2>
 					  	</div>
@@ -78,14 +82,23 @@
  					  		<div class="input-group">
 								<span><fmt:formatNumber type="number" maxFractionDigits="2" value="${assessment.score}"/>% out of</span>
 							</div>
-<%-- 							<fmt:formatNumber type="number" maxFractionDigits="2" value="${assessment.score}"/>% out of --%>
+							<fmt:formatNumber type="number" maxFractionDigits="2" value="${assessment.score}"/>% out of
 							<input type="text" class="form-control form-control-plaintext" name="assessmentWorth" value="${assessment.worth}" size="5">%
 					  	</div>
 					  	<div class="form-group">					  	
 					    	<input type="submit" class="btn btn-link" value="Save">
 					    	<a href="../actions/DeleteAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}">Delete</a>
 					  	</div>
-					</form>
+					</form> --%>
+					<div class="assessmentTypeTitle" data-id="div${status1.index}">
+						<h2 class="display-6">${assessment.type} 
+							<fmt:formatNumber type="number" minFractionDigits="2" value="${assessment.score}"/>
+								% out of ${assessment.worth}% 
+							<a href="../actions/DeleteAssessment?semesterId=${semesterId}&courseId=${courseId}&assessmentId=${status1.index}">
+							Delete
+							</a>
+						</h2>
+					</div>
 					<div id="div${status1.index}">
 						<div class="form-row table">
 		                    <div class="col-2 center">
