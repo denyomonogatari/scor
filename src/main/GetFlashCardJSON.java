@@ -24,23 +24,12 @@ import models.flashcards.FlashCard;
 public class GetFlashCardJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public GetFlashCardJSON() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		String deckName = request.getParameter("name");
+		System.out.println(deckName);
 		User user = (User) request.getSession().getAttribute("user");
 		ArrayList<FlashCard> d = user.getDeck(deckName);
 
@@ -54,9 +43,6 @@ public class GetFlashCardJSON extends HttpServlet {
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
-		// JSONObject card = new JSONObject();
-		// JSONObject card1 = new JSONObject();
-
 		for (int i = 0; i < d.size(); i++) {
 
 			try {
@@ -67,21 +53,10 @@ public class GetFlashCardJSON extends HttpServlet {
 				card.put("answer", answer);
 				data.put(card);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		writer.print(flashCardSet.toString());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

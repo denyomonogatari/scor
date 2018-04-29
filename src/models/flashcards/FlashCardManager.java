@@ -44,6 +44,18 @@ public class FlashCardManager {
 
 		String name6 = "haskell";
 		FlashCardDeck d6 = new FlashCardDeck(name6);
+		FlashCard a1 = new FlashCard("name?", "alcapone", 0);
+		FlashCard a2 = new FlashCard("what is your name?", "goku", 1);
+		FlashCard a3 = new FlashCard("what is my dogs name?", "shenron", 2);
+		FlashCard a4 = new FlashCard("what is the weenies name?", "yeup", 3);
+		FlashCard a5 = new FlashCard("what is the bears name?", "no", 4);
+		FlashCard a6 = new FlashCard("who is that white dog?", "idk", 5);
+		d6.addFlashCard(a1);
+		d6.addFlashCard(a2);
+		d6.addFlashCard(a3);
+		d6.addFlashCard(a4);
+		d6.addFlashCard(a5);
+		d6.addFlashCard(a6);
 
 		this.decks.add(d1);
 		this.decks.add(d2);
@@ -59,15 +71,15 @@ public class FlashCardManager {
 	}
 
 	public FlashCardDeck getDeck(String name) {
+		System.out.println("Alex");
 		System.out.println(name);
-		return this.decks.get(0);
-//		for (FlashCardDeck deck : this.decks) {
-//			if (deck.getDeckName().equals(name)) {
-//				return deck;
-//			}
-//		}
-//
-//		return null;
+		// return this.decks.get(0);
+		for (FlashCardDeck deck : this.decks) {
+			if (deck.getDeckName().equals(name)) {
+				return deck;
+			}
+		}
+		return null;
 	}
 
 	public void setDecks(ArrayList<FlashCardDeck> decks) {

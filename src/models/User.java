@@ -89,7 +89,6 @@ public class User {
 	public ArrayList<FlashCard> getDeck(String name) {
 
 		FlashCardDeck deck = this.fcm.getDeck(name);
-		// System.out.println(deck.getDeckName());
 		return deck.getDeck();
 
 	}

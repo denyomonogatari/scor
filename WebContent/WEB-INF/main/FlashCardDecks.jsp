@@ -17,7 +17,7 @@
 </head>
 <body>
 	<h1>Flash Card HomePage</h1>
-	<c:set var="decks" scope="page" value="${user.getFlashCardDecks()}" />
+	<c:set var="decks" scope="page" value="${user.getFlashCardDecks()}"/>
 	<table class="table table-hover">
 		<tr>
 			<th>#</th>
