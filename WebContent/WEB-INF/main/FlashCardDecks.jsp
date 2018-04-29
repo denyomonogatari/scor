@@ -16,6 +16,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+	<a class="navbar-brand" href="#">SCOR</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarText" aria-controls="navbarText"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarText">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item"><a class="nav-link" href="../main/MainPage">Home<span
+					class="sr-only">(current)</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="../auth/Logout">Logout</a>
+			</li>
+		</ul>
+	</div>
+	</nav>
 	<h1>Flash Card HomePage</h1>
 	<c:set var="decks" scope="page" value="${user.getFlashCardDecks()}" />
 	<table class="table table-hover">
@@ -28,15 +44,15 @@
 			<tr>
 				<td>${status.index}</td>
 				<td>${deck.getDeckName()}</td>
-				<td><a href="FlashCards?name=${deck.getDeckName()}">view</a> <a
-					href="#"> delete</a></td>
+				<td><a href="FlashCards?name=${deck.getDeckName()}">view</a> 
+				<a href="../actions/DeleteFlashCardDeck?name=${deck.getDeckName()}">delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 
 	<form action="../actions/AddFlashCardDeck" method="get">
-		<label for="add"></label> 
-		<input type="text" id="add" name="deckName">
+		<label for="add">Name:</label> <input type="text" id="add"
+			name="deckName">
 		<button>Add Deck</button>
 	</form>
 </body>

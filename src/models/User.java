@@ -91,9 +91,13 @@ public class User {
 		FlashCardDeck deck = this.fcm.getDeck(name);
 		return deck.getDeck();
 	}
-	
+
 	public void addFlashCardDeck(FlashCardDeck deck) {
 		this.fcm.addFlashCardDeck(deck);
+	}
+
+	public void deleteDeck(String name) {
+		this.fcm.deleteDeck(name);
 	}
 
 	public double getCumulativeGPA() {

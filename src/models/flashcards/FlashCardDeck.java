@@ -16,10 +16,6 @@ public class FlashCardDeck {
 		this.numberOfFlashCards = 0;
 	}
 
-	public FlashCardDeck() {
-
-	}
-
 	public int getNumberOfFlashCards() {
 		return numberOfFlashCards;
 	}
@@ -49,6 +45,7 @@ public class FlashCardDeck {
 	}
 
 	public void addFlashCard(FlashCard card) {
+		++numberOfFlashCards;
 		this.deck.add(card);
 	}
 
