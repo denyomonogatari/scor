@@ -1,5 +1,5 @@
 var deckName = document.getElementById("deckName").value
-//
+
 var JsonDeck = getJsonData();
 
 var index = 0
@@ -26,6 +26,8 @@ function previous() {
 	index++
 	
 }
+
+
 
 document.getElementById("cardHolder").addEventListener('click', function() {
 	var dom = document.getElementById("cardHolder")

@@ -71,11 +71,9 @@ public class FlashCardManager {
 	}
 
 	public FlashCardDeck getDeck(String name) {
-		System.out.println("Alex");
-		System.out.println(name);
-		// return this.decks.get(0);
 		for (FlashCardDeck deck : this.decks) {
 			if (deck.getDeckName().equals(name)) {
+				System.out.println(deck.getDeckName());
 				return deck;
 			}
 		}

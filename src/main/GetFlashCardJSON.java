@@ -29,7 +29,6 @@ public class GetFlashCardJSON extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		String deckName = request.getParameter("name");
-		System.out.println(deckName);
 		User user = (User) request.getSession().getAttribute("user");
 		ArrayList<FlashCard> d = user.getDeck(deckName);
 
