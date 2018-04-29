@@ -1,0 +1,43 @@
+.title, .flashcard, .actions {
+	border: dotted;
+}
+
+.title {
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+}
+
+.flashcard {
+	height: 250px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 250px;
+}
+
+.actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 125px;
+}
+
+.center_div {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+	margin: auto;
+}
+
+.outer_div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+}

@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%-- check if there is a session scope variable user --%>
 <c:if test="${empty sessionScope.user}">
-  <%-- redirect to Login --%>
-  <c:redirect url="../auth/Login" />
-</c:if>    
+	<%-- redirect to Login --%>
+	<c:redirect url="../auth/Login" />
+</c:if>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -63,11 +64,18 @@
         </div>
     </nav>	
 	<div class="container">
-        <c:set var="course" scope="page" value="${user.semesters[semesterId].courses[courseId]}"/>
+		<c:set var="course" scope="page"
+			value="${user.semesters[semesterId].courses[courseId]}" />
 		<div class="page-header">
 			<h1 class="display-4">${course.name}</h1>
-			<p class="lead">Percent: <strong><fmt:formatNumber type="number" maxFractionDigits="2" value="${course.percentEarned}"/>%</strong> out of 100.00%</p>
-			<p class="lead">Grade: <strong>${course.grade}</strong></p>
+			<p class="lead">
+				Percent: <strong><fmt:formatNumber type="number"
+						maxFractionDigits="2" value="${course.percentEarned}" />%</strong> out of
+				100.00%
+			</p>
+			<p class="lead">
+				Grade: <strong>${course.grade}</strong>
+			</p>
 		</div>
 		<div class="row">
 			<div class="col">
@@ -184,24 +192,29 @@
 		</div>
 
 		<br>
-        <div class="row">
-            <div class="col">
-                <form action="../actions/AddAssessment?semesterId=${semesterId}&courseId=${courseId}" method="post">
-                    <div class="form-row table" >
-                        <div class="col-4">
-                            <input type="text" class="form-control" placeholder="Asessment type" name="assessmentType" required>
-                        </div>
-                        <div class="col-4">
-                            <input type="text" class="form-control" placeholder="Worth" name="assessmentWorth" required>
-                        </div>
-                        <div class="col-4">
-                            <input type="submit" class="btn btn-primary" value="Add Assessment">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-		
+		<div class="row">
+			<div class="col">
+				<form
+					action="../actions/AddAssessment?semesterId=${semesterId}&courseId=${courseId}"
+					method="post">
+					<div class="form-row table">
+						<div class="col-4">
+							<input type="text" class="form-control"
+								placeholder="Asessment type" name="assessmentType" required>
+						</div>
+						<div class="col-4">
+							<input type="text" class="form-control" placeholder="Worth"
+								name="assessmentWorth" required>
+						</div>
+						<div class="col-4">
+							<input type="submit" class="btn btn-primary"
+								value="Add Assessment">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
 	</div>
 </body>
 </html>
