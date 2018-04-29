@@ -27,8 +27,8 @@
 		<h1 class="display-2">Hello, ${user.first}</h1>
 
 		<nav>
-			<a href="FlashCardDecks">Flash Cards</a> | 
-			<a href='#'>Equation Solver</a>
+			<a href="FlashCardDecks">Flash Cards</a> | <a href='#'>Equation
+				Solver</a>
 		</nav>
 		<div class="row">
 			<div class="col-6">
@@ -59,6 +59,12 @@
 			<div class="col-6">
 				<h2>Dates</h2>
 				<p>All your upcoming events go here.</p>
+
+				<div>
+					<label for="equation">Ask me a math question: </label> 
+					<input type="text" id="equation" name="mathQuestion">
+					<div id="answer">This is the answer</div>
+				</div>
 			</div>
 		</div>
 	</div>
