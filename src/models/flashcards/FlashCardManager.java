@@ -10,7 +10,7 @@ public class FlashCardManager {
 	public FlashCardManager() {
 		this.decks = new ArrayList<>();
 		this.numberOfDecks = 0;
-		addDummyTestData();
+		//addDummyTestData();
 	}
 
 	public void addDummyTestData() {
@@ -68,6 +68,10 @@ public class FlashCardManager {
 
 	public ArrayList<FlashCardDeck> getDecks() {
 		return decks;
+	}
+
+	public void addFlashCardDeck(FlashCardDeck deck) {
+		this.decks.add(deck);
 	}
 
 	public FlashCardDeck getDeck(String name) {

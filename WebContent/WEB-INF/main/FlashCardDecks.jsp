@@ -17,7 +17,7 @@
 </head>
 <body>
 	<h1>Flash Card HomePage</h1>
-	<c:set var="decks" scope="page" value="${user.getFlashCardDecks()}"/>
+	<c:set var="decks" scope="page" value="${user.getFlashCardDecks()}" />
 	<table class="table table-hover">
 		<tr>
 			<th>#</th>
@@ -33,5 +33,11 @@
 			</tr>
 		</c:forEach>
 	</table>
+
+	<form action="../actions/AddFlashCardDeck" method="get">
+		<label for="add"></label> 
+		<input type="text" id="add" name="deckName">
+		<button>Add Deck</button>
+	</form>
 </body>
 </html>
