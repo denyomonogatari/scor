@@ -540,7 +540,7 @@
   </select>
   <input class="page-block__input page-block__input--credits js-course-credits js-calculate js-store" type="number" placeholder="Credits" data-type="credits" aria-label="Course credits">
   <select class="page-block__select page-block__select--weight js-course-weight js-calculate js-store" disabled="disabled" data-type="weight" aria-label="Course weight">
-    <option selected="selected" disabled="disabled" hidden="hidden">Weight</option>
+    <option selected="selected" disabled="disabled" hidden="hidden">Weight's</option>
     <option value="0.0">Regular</option>
     <option value="0.5">Honors</option>
     <option value="1.0">AP / IB</option>
