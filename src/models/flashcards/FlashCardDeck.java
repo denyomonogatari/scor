@@ -7,10 +7,33 @@ public class FlashCardDeck {
 
 	private ArrayList<FlashCard> deck;
 	private int numberOfFlashCards;
+	private String deckName;
 
-	public FlashCardDeck() {
+	public FlashCardDeck(String deckName) {
+
+		this.deckName = deckName;
 		this.deck = new ArrayList<>();
 		this.numberOfFlashCards = 0;
+	}
+
+	public FlashCardDeck() {
+
+	}
+
+	public int getNumberOfFlashCards() {
+		return numberOfFlashCards;
+	}
+
+	public void setNumberOfFlashCards(int numberOfFlashCards) {
+		this.numberOfFlashCards = numberOfFlashCards;
+	}
+
+	public String getDeckName() {
+		return deckName;
+	}
+
+	public void setDeckName(String deckName) {
+		this.deckName = deckName;
 	}
 
 	public ArrayList<FlashCard> getDeck() {
@@ -23,6 +46,10 @@ public class FlashCardDeck {
 
 	public void addFlashCard(String question, String answer) {
 		this.deck.add(new FlashCard(question, answer, numberOfFlashCards++));
+	}
+
+	public void addFlashCard(FlashCard card) {
+		this.deck.add(card);
 	}
 
 	public void deleteFlashCard(FlashCard flashCard) {
