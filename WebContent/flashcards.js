@@ -24,7 +24,6 @@ function previous() {
 	index = index - 2
 	dom.innerHTML = array[index % (array.length)].question
 	index++
-	
 }
 
 
@@ -46,7 +45,7 @@ document.getElementById("cardHolder").addEventListener('click', function() {
 function getJsonData() {
 	$.ajax({
 		type : "GET",
-		url : "/scor/main/GetFlashCardJSON?name=" + deckName + "",
+		url : "../main/GetFlashCardJSON?name=" + deckName + "",
 		dataType : 'json',
 		success : function(json) {
 			window.state = json

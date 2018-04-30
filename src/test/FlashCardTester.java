@@ -7,7 +7,7 @@ public class FlashCardTester {
 
 	public static void main(String[] args) {
 
-		FlashCardDeck deck = new FlashCardDeck();
+		FlashCardDeck deck = new FlashCardDeck("test");
 
 		deck.addFlashCard("What langauge am I using?", "Java");
 		deck.addFlashCard("What time is it?", "12:38 PM");
