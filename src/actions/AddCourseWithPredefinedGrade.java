@@ -1,7 +1,6 @@
- package actions;
+package actions;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,15 +13,11 @@ import models.GradingScale;
 import models.Semester;
 import models.User;
 
-
-@WebServlet("/actions/AddCourse")
-public class AddCourse extends HttpServlet {
+@WebServlet("/actions/AddCourseWithPredefinedGrade")
+public class AddCourseWithPredefinedGrade extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
 		//Reference to session
 		HttpSession session = request.getSession();
 		
@@ -38,26 +33,25 @@ public class AddCourse extends HttpServlet {
 		
 		request.setAttribute("semesterId", request.getParameter("semesterId"));
 		
-		//new course name
+		// get course name
 		String courseName = request.getParameter("courseName");
-		//new course units
+		
+		// get course grade
+		String grade = request.getParameter("grade");
+		
+		// get course units
 		double units = Integer.parseInt(request.getParameter("units"));
+		
 		//new course gradingScale (default/traditional scale)
-		String gradingScale = request.getParameter("gradingScale");
-		GradingScale gradingScale1 = null;
-		if (gradingScale.equals("ABC/NC"))
-			gradingScale1 = new GradingScale(92, 90, 87, 83, 80, 75, 70);
-		else
-			gradingScale1 = new GradingScale(93, 90, 87, 83 ,80, 77, 73, 70, 67, 63, 60);
+		GradingScale gradingScale = new GradingScale(93, 90, 87, 83 ,80, 77, 73, 70, 67, 63, 60);
 		
 		//get current semester
 		Semester currentSemester = user.getSemesters().get(semesterId);
 		
 		//add course to current semester
-		currentSemester.addCourse(new Course(courseName, units, gradingScale1));
+		currentSemester.addCourse(new Course(courseName, units, gradingScale, grade));
 	
 		response.sendRedirect("../main/SemesterPage?semesterId=" + semesterId);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

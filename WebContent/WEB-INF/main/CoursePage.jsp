@@ -72,6 +72,9 @@
 				Units: <strong>${course.units}</strong>
 			</p>
 			<p class="lead">
+				Grading scale: <strong>${course.gradingScale.type}</strong>
+			</p>
+			<p class="lead">
 				Percent: <strong><fmt:formatNumber type="number"
 						maxFractionDigits="2" value="${course.percentEarned}" />%</strong> out of
 				100.00%

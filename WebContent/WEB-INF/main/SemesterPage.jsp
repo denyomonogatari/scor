@@ -72,6 +72,42 @@
                         </div>
                     </div>
                 </form>
+                
+                <form action="../actions/AddCourseWithPredefinedGrade" method="get">
+                    <input type="hidden" name="semesterId" value="${semesterId}">
+                        <legend id="addCourseLegend">Add Course with grade</legend>
+                    <div id="addCourseForm">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" name="courseName" placeholder="Course Name" required>
+                            </div>
+                            <div class="col">
+                                <select class="custom-select" name="grade">
+                                    <option value="A">A</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B">B</option>
+                                    <option value="B-">B-</option>
+                                    <option value="C+">C+</option>
+                                    <option value="C">C</option>
+                                    <option value="C-">C-</option>
+                                    <option value="D+">D+</option>
+                                    <option value="D">D</option>
+                                    <option value="D-">D-</option>
+                                    <option value="F">F</option>
+                                    <option value="NC">NC</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="units" placeholder="Units" required>
+                            </div>
+                            <div class="col">
+                                <input type="submit" class="btn btn-primary" value="Add Course">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
 			</div> 
 		</div>
 	</div>	
