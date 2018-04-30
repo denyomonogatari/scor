@@ -7,8 +7,8 @@
 }
 div.absolute {
     position: absolute;
-    top: 800px;
-    right:0;
+    top: 500px;
+    right:50;
     background : #99ffff;
     
 }
