@@ -40,7 +40,7 @@
     </nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-6">
+			<div class="col">
 				<h2>Courses</h2>
 				<ul>
 					<c:forEach items="${user.semesters[semesterId].courses}" var="course" varStatus="status">
@@ -63,10 +63,6 @@
 				</div>
 				</form>
 			</div> 
-			<div class="col-6">
-				<h2>Dates</h2>
-				<p>All your upcoming events go here.</p>
-			</div>
 		</div>
 	</div>	
 </body>

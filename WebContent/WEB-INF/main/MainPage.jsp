@@ -73,14 +73,15 @@
 				</form>
 			</div>
 			<div class="col-6">
-				<h2>Dates</h2>
-				<p>All your upcoming events go here.</p>
-
 				<div>
 					<form action="../action/GetAnswer" method="get">
-						<label for="equation">Ask me a math question: </label> <input
-							type="text" id="equation" name="mathQuestion">
-						<button>Give me an answer!</button>
+						<div class="form-group">
+							<label class="col-form-label-lg" for="equation">Ask me a math question: </label>
+							<input class="form-control" type="text" id="equation" name="mathQuestion">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary">Give me an answer!</button>
+						</div>
 					</form>
 				</div>
 			</div>
