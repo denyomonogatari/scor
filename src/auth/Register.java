@@ -27,7 +27,7 @@ public class Register extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 
-		// Pre-populate ServletContext with and array list of users
+		// Pre-populate ServletContext with an array list of users
 		ArrayList<User> users = new ArrayList<>();
 
 		GradingScale gradingScale1 = new GradingScale(92, 90, 87, 83, 80, 75, 70);

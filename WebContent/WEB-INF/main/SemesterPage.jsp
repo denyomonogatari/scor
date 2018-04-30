@@ -26,17 +26,21 @@
 						<li><a href="CoursePage?semesterId=${semesterId}&courseId=${status.index}">${course.name} ${course.grade}</a></li>
 					</c:forEach>
 				</ul>
+				<form action="../actions/AddCourse" method="post">
+				<input type="hidden" name="semesterId" value="${semesterId}">
+					<legend>Add Course</legend>
 				<div class="row">
 					<div class="col">
-						<input type="text" class="form-control" name="course" placeholder="Name of Course">
+						<input type="text" class="form-control" name="courseName" placeholder="Course Name">
+					</div>
+				<div class="col">
+						<input type="text" class="form-control" name="units" placeholder="Units">
 					</div>
 					<div class="col">
-						<input type="text" maxlength="2" class="form-control" name="grade" placeholder="Grade">
-					</div>
-					<div class="col">
-						<a class="btn btn-primary" href="#" role="button">Add Course</a>
+						<input type="submit" class="btn btn-primary" value="Add Course">
 					</div>
 				</div>
+				</form>
 			</div> 
 			<div class="col-6">
 				<h2>Dates</h2>

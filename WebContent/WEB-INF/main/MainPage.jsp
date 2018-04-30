@@ -42,19 +42,20 @@
 						</a></li>
 					</c:forEach>
 				</ul>
+			<form action="../actions/AddSemester" method="get">
+					<legend>Add Semester</legend>
 				<div class="row">
 					<div class="col">
-						<input type="text" class="form-control" name="semester"
-							placeholder="Name of Semester">
+						<input type="text" maxlength="6" class="form-control" name="term" placeholder="Term">
+					</div>
+				<div class="col">
+						<input type="text" class="form-control" name="year" placeholder="Year">
 					</div>
 					<div class="col">
-						<input type="text" maxlength="4" class="form-control" name="year"
-							placeholder="Year">
-					</div>
-					<div class="col">
-						<a class="btn btn-primary" href="#" role="button">Add Semester</a>
+						<input type="submit" class="btn btn-primary" value="Add Semester">
 					</div>
 				</div>
+				</form>
 			</div>
 			<div class="col-6">
 				<h2>Dates</h2>
