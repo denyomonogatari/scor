@@ -35,7 +35,7 @@
 	</nav>
 	<div class="outer_div">
 		<div class="center_div">
-			<div class="title">${name}</div>
+			<div class="title"><h1>${name}</h1></div>
 			<div class="flashcard" id='cardHolder'></div>
 			<input id='deckName' type='hidden' value='${name}'>
 			<div class="actions">

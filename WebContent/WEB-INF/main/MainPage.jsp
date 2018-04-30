@@ -57,27 +57,30 @@
 						</a></li>
 					</c:forEach>
 				</ul>
-			<form action="../actions/AddSemester" method="get">
+				<form action="../actions/AddSemester" method="get">
 					<legend>Add Semester</legend>
-				<div class="row">
-					<div class="col">
-						<input type="text" maxlength="6" class="form-control" name="term" placeholder="Term">
+					<div class="row">
+						<div class="col">
+							<input type="text" maxlength="6" class="form-control" name="term"
+								placeholder="Term">
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" name="year"
+								placeholder="Year">
+						</div>
+						<div class="col">
+							<input type="submit" class="btn btn-primary" value="Add Semester">
+						</div>
 					</div>
-				<div class="col">
-						<input type="text" class="form-control" name="year" placeholder="Year">
-					</div>
-					<div class="col">
-						<input type="submit" class="btn btn-primary" value="Add Semester">
-					</div>
-				</div>
 				</form>
 			</div>
 			<div class="col-6">
 				<div>
 					<form action="../action/GetAnswer" method="get">
 						<div class="form-group">
-							<label class="col-form-label-lg" for="equation">Ask me a math question: </label>
-							<input class="form-control" type="text" id="equation" name="mathQuestion">
+							<label class="col-form-label-lg" for="equation">Ask me a
+								math question: </label> <input class="form-control" type="text"
+								id="equation" name="mathQuestion">
 						</div>
 						<div class="form-group">
 							<button class="btn btn-primary">Give me an answer!</button>
