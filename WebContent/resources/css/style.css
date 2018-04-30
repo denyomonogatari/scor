@@ -3,9 +3,15 @@
  -ms-text-size-adjust:100%;
  -webkit-text-size-adjust:100%
 }
-body {
- margin:0
+
+div.absolute {
+    position: absolute;
+    top: 550px;
+    background : #99ffff;
+    
 }
+
+
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary {
  display:block
 }
@@ -174,7 +180,7 @@ textarea {
 body {
  color:#0D2451;
  font-family:"Barlow", "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
- background-color:#D9F7FA
+ background-color:#D9F7FA;
 }
 body.menu-is-open {
  overflow:hidden
@@ -186,8 +192,7 @@ body.menu-is-open {
  position:fixed;
  display:none;
  justify-content:space-between;
- width:1140px;
- height:100vh;
+
  top:0;
  left:0;
  right:0;
@@ -29124,7 +29129,7 @@ p {
  max-width:100%;
  margin-top:-1.5em;
  padding:1.25em 1.5em 1.5em;
- background-color:#FFFFFF;
+ background-color:#99ffff;
  border-radius:0.5em;
  box-shadow:0 0.25em 1em rgba(7,29,63,0.125);
  -webkit-animation:fadeUpDelay 400ms;

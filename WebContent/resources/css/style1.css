@@ -5,9 +5,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+div.absolute {
+    position: absolute;
+    top: 800px;
+    right:0;
+    background : #99ffff;
+    
+}
 
 h1, h2 {
-  color: #F5F7FA;
+  color: black;
   text-align: center;
 }
 
@@ -21,9 +28,7 @@ h2 {
   font-weight: 100;
 }
 
-body {
-  background: #A0D468;
-}
+
 
 table {
   text-align: left;
