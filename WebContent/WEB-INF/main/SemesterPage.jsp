@@ -41,27 +41,37 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h2>Courses</h2>
+				<h2>${user.semesters[semesterId].season} ${user.semesters[semesterId].year} Courses</h2>
 				<ul>
 					<c:forEach items="${user.semesters[semesterId].courses}" var="course" varStatus="status">
 						<li><a href="CoursePage?semesterId=${semesterId}&courseId=${status.index}">${course.name} ${course.grade}</a></li>
 					</c:forEach>
 				</ul>
-				<form action="../actions/AddCourse" method="post">
-				<input type="hidden" name="semesterId" value="${semesterId}">
-					<legend>Add Course</legend>
-				<div class="row">
-					<div class="col">
-						<input type="text" class="form-control" name="courseName" placeholder="Course Name">
-					</div>
-				<div class="col">
-						<input type="text" class="form-control" name="units" placeholder="Units">
-					</div>
-					<div class="col">
-						<input type="submit" class="btn btn-primary" value="Add Course">
-					</div>
-				</div>
-				</form>
+				<form action="../actions/AddCourse" method="get">
+                    <div class="form-group">
+                        <input type="hidden" name="semesterId" value="${semesterId}">
+                        <legend id="addCourseLegend1">Add Course</legend>
+                    </div>
+                    <div class="form-group addCourseForm1">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" name="courseName" placeholder="Course Name" required>
+                            </div>
+                            <div class="col">
+                                <select class="custom-select" name="gradingScale" id="gradingScale">
+                                    <option value="ABC/NC">ABC/NC</option>
+                                    <option value="ABCDF">ABCDF</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="units" placeholder="Units" required>
+                            </div>
+                            <div class="col">
+                                <input type="submit" class="btn btn-primary" value="Add Course">
+                            </div>
+                        </div>
+                    </div>
+                </form>
 			</div> 
 		</div>
 	</div>	
