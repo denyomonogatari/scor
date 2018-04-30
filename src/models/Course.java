@@ -7,9 +7,22 @@ public class Course {
 	private GradingScale gradingScale;
 	// private ArrayList<Assessment> assessments = new ArrayList<>();
 	private double units;
+	
+	private boolean hasPredefinedGrade = false;
+	
+	private String predefinedGrade;
 
 	protected CourseWorkHandler cwh;
 
+	public Course(String name, double units, GradingScale gradingScale, String predefinedGrade) {
+		this.name = name;
+		this.gradingScale = gradingScale;
+		this.units = units;
+		this.cwh = new CourseWorkHandler();
+		this.predefinedGrade = predefinedGrade;
+		this.hasPredefinedGrade = true;
+	}
+	
 	public Course(String name, double units, GradingScale gradingScale) {
 		this(name, units, gradingScale, new CourseWorkHandler());
 	}
@@ -102,12 +115,17 @@ public class Course {
 	}
 
 	public String getGrade() {
+		if (hasPredefinedGrade) {
+			return predefinedGrade;
+		}
+		
 		double percentEarned = getPercentEarned();
 
 		return gradingScale.getGrade(percentEarned);
 	}
 
 	public double getGradePoints() {
+		
 		return gradingScale.getCredits(getGrade()) * units;
 	}
 
