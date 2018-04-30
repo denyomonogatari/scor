@@ -31,6 +31,8 @@
 					href="UpcomingAssignmentsPage">Upcoming Assignments</a></li>
 				<li class="nav-item"><a class="nav-link" href="FlashCardDecks">Flash
 						Card Decks</a></li>
+				 <li class="nav-item"><a class="nav-link" href="ExpensesManagerPage">Expenses
+				Manager</a></li>		
 				<li class="nav-item"><a class="nav-link" href="../auth/Logout">Logout</a>
 				</li>
 			</ul>
