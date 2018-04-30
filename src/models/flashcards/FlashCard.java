@@ -33,11 +33,10 @@ public class FlashCard {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Question: " + this.question + "\n" +
-				"Answer: " + this.answer;
+		return "Question: " + this.question + "\n" + "Answer: " + this.answer;
 	}
 
 }

@@ -42,7 +42,7 @@ public class EquationSolver {
 		} catch (WAException e) {
 			e.printStackTrace();
 		}
-
+		System.out.println(result.toString());
 		return result.toString();
 	}
 }

@@ -1,8 +1,11 @@
 package auth;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -27,7 +30,12 @@ public class Register extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		String dueDateString = null;
+		Date dueDate = null;
+		
 		// Pre-populate ServletContext with and array list of users
+		
 		ArrayList<User> users = new ArrayList<>();
 
 		GradingScale gradingScale1 = new GradingScale(92, 90, 87, 83, 80, 75, 70);
@@ -46,10 +54,28 @@ public class Register extends HttpServlet {
 		Assignment assignment1 = new Assignment("Lab1", 80, 100, true, false, null, null,
 				"Labs and Quizzes");
 		Assignment assignment2 = new Assignment("Lab2", 10, 13, true, false, null, null, "Labs and Quizzes");
-		Assignment assignment3 = new Assignment("Lab3", 11, 13, true, false, null, null, "Labs and Quizzes");
+		
+		try {
+			dueDateString = "2018-05-04T12:59";
+			dueDate = df.parse(dueDateString);
+		}
+		catch (ParseException e) {
+			System.out.println(e);
+		}
+		Assignment assignment3 = new Assignment("Lab3", 11, 13, false, false, null, dueDate, "Labs and Quizzes");
+		
 		Assignment assignment4 = new Assignment("Midterm", 30, 37, true, false, null, null, "Midterm");
 		Assignment assignment5 = new Assignment("Homework 1", 9, 10, true, false, null, null, "Homework");
-		Assignment assignment6 = new Assignment("Homework 2", 8, 10, true, false, null, null, "Homework");
+		
+		try {
+			dueDateString = "2018-05-06T23:59";
+			dueDate = df.parse(dueDateString);
+		}
+		catch (ParseException e) {
+			System.out.println(e);
+		}
+		Assignment assignment6 = new Assignment("Homework 2", 8, 10, false, false, null, dueDate, "Homework");
+		
 		Assignment assignment7 = new Assignment("Final", 83, 100, true, false, null, null, "Final");
 
 		assessment1.addAssignment(assignment1);
@@ -83,7 +109,15 @@ public class Register extends HttpServlet {
 				"Homework and Labs");
 		Assignment assignment11 = new Assignment("Lab 2 Request Summary", 80, 100, true, false, null, null,
 				"Homework and Labs");
-		Assignment assignment12 = new Assignment("Lab 3 Export to Excel", 90, 100, true, false, null, null,
+		
+		try {
+			dueDateString = "2018-05-05T18:00";
+			dueDate = df.parse(dueDateString);
+		}
+		catch (ParseException e) {
+			System.out.println(e);
+		}
+		Assignment assignment12 = new Assignment("Lab 3 Export to Excel", 90, 100, false, false, null, dueDate,
 				"Homework and Labs");
 
 		Assignment assignment13 = new Assignment("HTML, CSS, and Deployment", 8, 10, true, false, null, null,
@@ -92,8 +126,16 @@ public class Register extends HttpServlet {
 		Assignment assignment15 = new Assignment("HTTP Responses", 8, 10, true, false, null, null, "Quizzes");
 		Assignment assignment16 = new Assignment("Cookies  and Session", 9, 10, true, false, null, null,
 				"Quizzes");
-		Assignment assignment17 = new Assignment("JSP Scripting Elements and Directives", 10, 10, true, false, null,
-				null, "Quizzes");
+		
+		try {
+			dueDateString = "2018-05-03T18:00";
+			dueDate = df.parse(dueDateString);
+		}
+		catch (ParseException e) {
+			System.out.println(e);
+		}
+		Assignment assignment17 = new Assignment("JSP Scripting Elements and Directives", 10, 10, false, false, null,
+				dueDate, "Quizzes");
 
 		Assignment assignment18 = new Assignment("Midterm Exam", 95, 100, true, false, null, null,
 				"Midterm");
@@ -129,7 +171,7 @@ public class Register extends HttpServlet {
 
 		spring2018.addCourse(cs3220);
 		
-		GradingScale gradingScale2 = new GradingScale(94, 90, 87, 84, 80, 77, 74, 70, 67, 64, 60);
+		GradingScale gradingScale2 = new GradingScale(93, 90, 87, 83 ,80, 77, 73, 70, 67, 63, 60);
 		Course ee3445 = new Course("EE 3445", 3, gradingScale2);
 		spring2018.addCourse(ee3445);
 

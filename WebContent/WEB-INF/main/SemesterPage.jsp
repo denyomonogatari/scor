@@ -16,32 +16,99 @@
 	<title>Semester Page</title>
 </head>
 <body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">    
+        <a class="navbar-brand" href="#">SCOR</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="MainPage">Home<span class="sr-only">(current)</span></a>
+                </li>
+<%--                 <li class="nav-item">
+                    <a class="nav-link" href="SemesterPage?semesterId=${semesterId}">Courses</a>
+                </li> --%>
+                <li class="nav-item">
+                    <a class="nav-link" href="UpcomingAssignmentsPage">Upcoming Assignments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../auth/Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 	<div class="container">
-		<p class="text-right"><a href="../auth/Logout">Logout</a></p>
 		<div class="row">
-			<div class="col-6">
-				<h2>Courses</h2>
+			<div class="col">
+				<h2>${user.semesters[semesterId].season} ${user.semesters[semesterId].year} Courses</h2>
 				<ul>
 					<c:forEach items="${user.semesters[semesterId].courses}" var="course" varStatus="status">
 						<li><a href="CoursePage?semesterId=${semesterId}&courseId=${status.index}">${course.name} ${course.grade}</a></li>
 					</c:forEach>
 				</ul>
-				<div class="row">
-					<div class="col">
-						<input type="text" class="form-control" name="course" placeholder="Name of Course">
-					</div>
-					<div class="col">
-						<input type="text" maxlength="2" class="form-control" name="grade" placeholder="Grade">
-					</div>
-					<div class="col">
-						<a class="btn btn-primary" href="#" role="button">Add Course</a>
-					</div>
-				</div>
+				<form action="../actions/AddCourse" method="get">
+                    <div class="form-group">
+                        <input type="hidden" name="semesterId" value="${semesterId}">
+                        <legend id="addCourseLegend1">Add Course</legend>
+                    </div>
+                    <div class="form-group addCourseForm1">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" name="courseName" placeholder="Course Name" required>
+                            </div>
+                            <div class="col">
+                                <select class="custom-select" name="gradingScale" id="gradingScale">
+                                    <option value="ABC/NC">ABC/NC</option>
+                                    <option value="ABCDF">ABCDF</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="units" placeholder="Units" required>
+                            </div>
+                            <div class="col">
+                                <input type="submit" class="btn btn-primary" value="Add Course">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+                <form action="../actions/AddCourseWithPredefinedGrade" method="get">
+                    <input type="hidden" name="semesterId" value="${semesterId}">
+                        <legend id="addCourseLegend">Add Course with grade</legend>
+                    <div id="addCourseForm">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" name="courseName" placeholder="Course Name" required>
+                            </div>
+                            <div class="col">
+                                <select class="custom-select" name="grade">
+                                    <option value="A">A</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B">B</option>
+                                    <option value="B-">B-</option>
+                                    <option value="C+">C+</option>
+                                    <option value="C">C</option>
+                                    <option value="C-">C-</option>
+                                    <option value="D+">D+</option>
+                                    <option value="D">D</option>
+                                    <option value="D-">D-</option>
+                                    <option value="F">F</option>
+                                    <option value="NC">NC</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="units" placeholder="Units" required>
+                            </div>
+                            <div class="col">
+                                <input type="submit" class="btn btn-primary" value="Add Course">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
 			</div> 
-			<div class="col-6">
-				<h2>Dates</h2>
-				<p>All your upcoming events go here.</p>
-			</div>
 		</div>
 	</div>	
 </body>
