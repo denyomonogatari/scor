@@ -69,6 +69,9 @@
 		<div class="page-header">
 			<h1 class="display-4">${course.name}</h1>
 			<p class="lead">
+				Units: <strong>${course.units}</strong>
+			</p>
+			<p class="lead">
 				Percent: <strong><fmt:formatNumber type="number"
 						maxFractionDigits="2" value="${course.percentEarned}" />%</strong> out of
 				100.00%
