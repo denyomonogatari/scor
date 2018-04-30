@@ -5,8 +5,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 div.absolute {
-    position: absolute;
+    /* position: absolute; */
     top: 800px;
     right:0;
     background : #99ffff;
